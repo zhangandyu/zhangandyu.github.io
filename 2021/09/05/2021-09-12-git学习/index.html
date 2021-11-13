@@ -30,7 +30,10 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="怪兽宇的小站" type="application/atom+xml">
+</head>
 
 
 
@@ -434,16 +437,16 @@
             <div id="articleContent">
                 <h1 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h1><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html</a></p>
 <p><img src="https://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Workspace：工作区</span><br><span class="line">Index / Stage：暂存区</span><br><span class="line">Repository：仓库区（或本地仓库）</span><br><span class="line">Remote：远程仓库</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Workspace：工作区</span><br><span class="line">Index / Stage：暂存区</span><br><span class="line">Repository：仓库区（或本地仓库）</span><br><span class="line">Remote：远程仓库</span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h1><ol>
 <li> 通过命令<code>git int</code>把这个目录变成git可以管理的仓库，执行后会生成.git目录，在这个目录里会存所有编辑的历史快照。如果要查看之前修改前版本，可以从仓库中调取之前的快照。</li>
 </ol>
-   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在当前目录新建一个Git代码库</span></span><br><span class="line">$ git <span class="built_in">int</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个目录，将其初始化为Git代码库</span></span><br><span class="line">$ git init [project-name]</span><br></pre></td></tr></table></figure>
+   <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在当前目录新建一个Git代码库</span></span><br><span class="line">$ git <span class="built_in">int</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个目录，将其初始化为Git代码库</span></span><br><span class="line">$ git init [project-name]</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li><p><code>git config --global</code> 参数，有了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然你也可以对某个仓库指定的不同的用户名和邮箱。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示当前的Git配置</span></span><br><span class="line">$ git config --<span class="built_in">list</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑Git配置文件</span></span><br><span class="line">$ git config -e [--<span class="keyword">global</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置提交代码时的用户信息</span></span><br><span class="line">$ git config [--<span class="keyword">global</span>] user.name <span class="string">&quot;[name]&quot;</span></span><br><span class="line">$ git config [--<span class="keyword">global</span>] user.email <span class="string">&quot;[email address]&quot;</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示当前的Git配置</span></span><br><span class="line">$ git config --<span class="built_in">list</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑Git配置文件</span></span><br><span class="line">$ git config -e [--<span class="keyword">global</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置提交代码时的用户信息</span></span><br><span class="line">$ git config [--<span class="keyword">global</span>] user.name <span class="string">"[name]"</span></span><br><span class="line">$ git config [--<span class="keyword">global</span>] user.email <span class="string">"[email address]"</span></span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
 <p><code>git status</code>-快速查看仓库的状态</p>
 <blockquote>
@@ -483,19 +486,19 @@
 <h1 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h1><p><code>git branch</code>-显示所有分支</p>
 <blockquote>
 <p>git branch命令可以将分支名列表显示，同时可以确认当前所在分支。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br><span class="line">* master</span><br></pre></td></tr></tbody></table></figure>
 
 <p>有“*”（星号），表示这是我们当前所在的分支。也就是说，我们正在master分支下进行开发。</p>
 </blockquote>
 <p><code>git checdkout -b</code> -创建、切换分支</p>
 <blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b feature-A</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b feature-A</span><br></pre></td></tr></tbody></table></figure>
 
 <p>创建名为<code>feature-A</code>的分支</p>
 </blockquote>
 <p><code> git checkout分支名称</code>-切换到master分支</p>
 <blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></tbody></table></figure>
 </blockquote>
 <p><code>git checkout -</code> 切回上一个分支</p>
 <blockquote>
@@ -506,9 +509,9 @@
 <p>假设feature-A已经实现完毕，想要将它合并到主干分支master中。</p>
 <ol>
 <li><p>切换到master分支</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>然后合并feature-A分支。为了在历史记录中明确记录下本次分支合并，我们需要创建合并提交。因此，在合并时加上–no-ff参数。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff feature-A</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff feature-A</span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
 </blockquote>
 <p><code>git log --graph</code> -以图表形式查看分支</p>
@@ -522,7 +525,7 @@
 <p>然后根据查到的哈希值回溯历史版本</p>
 </blockquote>
 <blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard fd0cbf.......</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard fd0cbf.......</span><br></pre></td></tr></tbody></table></figure>
 
 </blockquote>
 <p><code>git commit --amend</code>-修改提交信息</p>
@@ -530,12 +533,12 @@
 <h1 id="远程仓库操作"><a href="#远程仓库操作" class="headerlink" title="远程仓库操作"></a>远程仓库操作</h1><p><code>git remote add</code>-添加远程仓库</p>
 <blockquote>
 <p>用git remote add命令将它设置成本地仓库的远程仓库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> origin git<span class="variable">@github</span>.com:zhangyu756897669<span class="operator">/</span>zhangyu756897669.github.</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> origin git<span class="variable">@github</span>.com:zhangyu756897669<span class="operator">/</span>zhangyu756897669.github.</span><br></pre></td></tr></tbody></table></figure>
 </blockquote>
 <p><code>git push</code>-推送至远程仓库</p>
 <blockquote>
 <p>-u参数可以在推送的同时，将origin仓库的master分支设置为本地仓库当前分支的upstream（上游）。添加了这个参数，将来运行git pull命令从远程仓库获取内容时，本地仓库的这个分支就可以直接从origin的master分支获取内容，省去了另外添加参数的麻烦。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></tbody></table></figure>
 </blockquote>
 <p><code>git clone</code>-获取远程仓库</p>
 <blockquote>
