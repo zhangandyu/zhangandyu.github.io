@@ -1,0 +1,1692 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Python-Pandas库学习, Hexo">
+    <meta name="description" content="Python数据处理常见用法">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Python-Pandas库学习 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2743748018,437360056&fm=26&gp=0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Python-Pandas库学习</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Python/">
+                                <span class="chip bg-color">Python</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Python/" class="post-category">
+                                Python
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2020-06-01
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="读取与写入Excel数据"><a href="#读取与写入Excel数据" class="headerlink" title="读取与写入Excel数据"></a>读取与写入Excel数据</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37693335/article/details/81474995">相对路径与绝对路径</a></li>
+</ul>
+<ol>
+<li>读取文件夹内容<blockquote>
+<p>r（转义符）避免路径中的\被转义。路径中不加 \ 则需要把所有的\写成/。</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">file_list = os.listdir(<span class="string">r&#x27;E:\工作文件\周报\周数据\测试\0902-0908&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(file_list, <span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取当前文件夹地址</span></span><br><span class="line">os.getcwd()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>读取xls格式Excel表</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_excel(<span class="string">&#x27;E:/工作文件/an-商品汇总-uv.xls&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df = pd.read_excel(<span class="string">r&#x27;E:\工作文件\an-商品汇总-uv.xls&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>读取csv格式Excel表</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&#x27;E:/工作文件/周报/周数据/测试/0902-0908/商品汇总.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取csv文件，并用 分隔符分割</span></span><br><span class="line">df = pd.read_csv(<span class="string">r&#x27;E:\商品汇总.csv&#x27;</span>, sep = <span class="string">&quot; &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只读取文件前两行</span></span><br><span class="line">df = pd.read_csv(<span class="string">r&#x27;E:\商品汇总.csv&#x27;</span>, nrows = <span class="number">2</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li> 读取显示编码错误</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改方式</span></span><br><span class="line">df = pd.read_csv(path + <span class="string">&#x27;登记用户 20191127.csv&#x27;</span>,encoding=<span class="string">&quot;gbk&quot;</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当文件路径包含中文解析错误时，设置 engine 参数来消除这个错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 错误原因， 当调用read_csv方法时，默认使用C语言作为解析语言，只需要将默认值c语言更改为python</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果文件格式是  csv usf-8, 那么编码也改为 utf-8-sig</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果文件格式是 csv格式， 则编码格式为 gbk</span></span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;登记用户 20191127.csv&#x27;</span>, engine = <span class="string">&#x27;python&#x27;</span>, encoding = <span class="string">&#x27;utf-8-sig&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>读取txt格式数据</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_table(<span class="string">r&#x27;C:\Users\Administrator\Desktop\haha.txt&#x27;</span>, sep = <span class="string">&#x27; &#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\Administrator\Desktop\haha.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    df = f.readlines() </span><br><span class="line"></span><br><span class="line">df = np.loadtxt(<span class="string">r&#x27;C:\Users\Administrator\Desktop\haha.txt&#x27;</span>)  <span class="comment"># 将txt文件存为numpy数组</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>读取excel中的sheet名称</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_Excel(<span class="string">r&#x27;E:\工作文件\an-商品汇总-uv.xlsx&#x27;</span>, sheet_name = <span class="string">&#x27;sheet1&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 传入sheet的顺序，从0开始计数</span></span><br><span class="line">df = pd.read_Excel(<span class="string">r&#x27;E:\工作文件\an-商品汇总-uv.xlsx&#x27;</span>, sheet_name = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取sheet,并制定文件中的第几行做行索引</span></span><br><span class="line">df = pd.read_Excel(<span class="string">r&#x27;E:\工作文件\an-商品汇总-uv.xlsx&#x27;</span>, sheet_name = <span class="number">0</span>, index_col = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取sheet文件， 并制定文件中的第几列做列索引</span></span><br><span class="line">df = pd.read_Excel(<span class="string">r&#x27;E:\工作文件\商品汇总.xlsx&#x27;</span>, sheet_name = <span class="number">0</span>, head = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当本地文件过多时，可以通过设定 usecols 参数来指定要导入的列</span></span><br><span class="line">df = pd.read_Excel(<span class="string">r&#x27;E:\商品汇总.xlsx&#x27;</span>, usecols = <span class="number">0</span>)</span><br><span class="line"><span class="comment"># uescols = [0,2]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel中所有sheet，并进行合并</span></span><br><span class="line">rbook = []</span><br><span class="line">kong_data = os.listdir(<span class="string">r&#x27;F:\省资源位&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> file_name <span class="keyword">in</span> kong_data:</span><br><span class="line">    data_excel = pd.ExcelFile(<span class="string">r&#x27;F:\省资源位\\&#x27;</span>+file_name)</span><br><span class="line">    sheet = data_excel.sheet_names</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> sheet:</span><br><span class="line">        data_button_rest = pd.read_excel(<span class="string">r&#x27;F:\省资源位\\&#x27;</span>+file_name, sheet_name= i )</span><br><span class="line">        rbook.append(data_button_rest)</span><br><span class="line">        result_df =pd.concat(rbook)</span><br><span class="line">datas_excel = pd.DataFrame(result_df)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将运行的所有数据都展现出来， 而不是只展现最后一条</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  IPython.core.interactiveshell <span class="keyword">import</span> InteractiveShell</span><br><span class="line">InteractiveShell.ast_node_interactivity = <span class="string">&quot;all&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>将数据写入Excel表， 并输出</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写入数据</span></span><br><span class="line">df.to_excel(<span class="string">&#x27;C:/Users/Administrator/Desktop/&#x27;</span>+<span class="string">&#x27;商品分类.xlsx&#x27;</span>)</span><br><span class="line">df.to_excel(<span class="string">r&#x27;C:\Users\Administrator\Desktop\\&#x27;</span>+<span class="string">&#x27;商品分类.xlsx&#x27;</span>)</span><br><span class="line">df.to_excel(<span class="string">r&#x27;C:\Users\Administrator\Desktop/&#x27;</span>+<span class="string">&#x27;商品分类.xlsx&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入数据，且不带索引</span></span><br><span class="line">df.to_excel(<span class="string">&#x27;C:/Users/商品分类.xlsx&#x27;</span>, sheet_name = <span class="string">&#x27;首页&#x27;</span>, index = <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置要导出的列</span></span><br><span class="line">df.to_excel(<span class="string">&#x27;C:/Users/商品分类.xlsx&#x27;</span>, sheet_name = <span class="string">&#x27;首页&#x27;</span>, index = <span class="literal">False</span>,</span><br><span class="line">           columns = [<span class="string">&#x27;ID&#x27;</span>, <span class="string">&#x27;销量’])</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 设置编码格式</span></span><br><span class="line"><span class="string">df.to_excel(&#x27;</span>C:/Users/商品分类.xlsx<span class="string">&#x27;, sheet_name = &#x27;</span>首页<span class="string">&#x27;, index = False,</span></span><br><span class="line"><span class="string">           encoding = &#x27;</span>utf-<span class="number">8</span><span class="string">&#x27;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 缺失值、无穷值处理</span></span><br><span class="line"><span class="string">df.to_excel(&#x27;</span>C:/Users/商品分类.xlsx<span class="string">&#x27;, sheet_name = &#x27;</span>首页<span class="string">&#x27;, index = False,</span></span><br><span class="line"><span class="string">           na_rep = 0, # 缺失值用0填充</span></span><br><span class="line"><span class="string">           inf_rep = 0 # 无穷之用0填充</span></span><br><span class="line"><span class="string">           )</span></span><br><span class="line"><span class="string"># 导出csv文件，设置分隔符</span></span><br><span class="line"><span class="string">df.to_excel(&#x27;</span>C:/Users/商品分类.xlsx<span class="string">&#x27;, sheet_name = &#x27;</span>首页<span class="string">&#x27;, index = False,</span></span><br><span class="line"><span class="string">            sep = &#x27;</span>,<span class="string">&#x27;</span></span><br><span class="line"><span class="string">           )</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将求出的数据存储在excel中的多个sheet中</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> load_workbook</span><br><span class="line"> </span><br><span class="line">writer = pd.ExcelWriter(<span class="string">&#x27;F:/notebooks/zhoushuju.xlsx&#x27;</span>)</span><br><span class="line"></span><br><span class="line">btn_navigation.to_excel(writer, sheet_name = <span class="string">&#x27;底部导航&#x27;</span>)</span><br><span class="line">shouye_top20.to_excel(writer, sheet_name = <span class="string">&#x27;首页top20&#x27;</span>)</span><br><span class="line">writer.save()</span><br><span class="line">writer.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>其他数据格式</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从SQL表/库导入数据 </span></span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">eng = pymysql.connet(host= <span class="string">&#x27;100.129&#x27;</span>, user = <span class="string">&#x27;root&#x27;</span>, password = <span class="string">&#x27;1234&#x27;</span>, df = <span class="string">&#x27;db&#x27;</span>, charset = <span class="string">&#x27;ugf8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">query = <span class="string">&quot;&quot;&quot;select * from android_log &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">df = pd.read_sql(query, eng)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导出数据到SQL表 </span></span><br><span class="line">df.to_sql(table_name, eng)</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>常见问题</li>
+</ol>
+<ul>
+<li>当文件有中文时， 可能会出现错误：Initializing from file failed 有中文， 可以用此方法解决</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(‘我的文件.csv’)</span><br><span class="line">res = pd.read_csv(f)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看大文件有多少列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data = <span class="built_in">open</span>(<span class="string">&#x27;E:/用户明细.csv&#x27;</span>)</span><br><span class="line">data1 = pd.read_csv(data, iterator=<span class="literal">True</span>)</span><br><span class="line">data2 = data1.get_chunk(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(data2)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://wiki.jikexueyuan.com/project/explore-python/Advanced-Features/iterator.html">迭代器</a></p>
+<!-- 
+# 对输出数据进行处理
+
+[pandas的数据输出显示设置](https://www.jianshu.com/p/5c0aa1fa19af)
+
+
+1. 对表中某一列元素进行相同操作
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[&#x27;金额&#x27;].apply(lambda x:x+1)</span><br><span class="line"></span><br><span class="line">df[&#x27;金额&#x27;] +2</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>对表中每一个元素进行相同操作</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.applymap(lambda x:x+1)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(np.random.randn(<span class="number">150</span>, <span class="number">150</span>))</span><br><span class="line"><span class="comment"># pd.set_option(&#x27;expand_frame_repr&#x27;, False) #数据超过总宽度后，是否折叠显示</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.width&#x27;</span>, <span class="number">100</span>) <span class="comment">#数据显示总宽度</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;max_rows&#x27;</span>, <span class="number">100</span>) <span class="comment">#显示最多行数，超出该数以省略号表示</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;max_columns&#x27;</span>, <span class="number">100</span>) <span class="comment">#显示最多列数，超出该数以省略号表示</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;max_colwidth&#x27;</span>, <span class="number">16</span>) <span class="comment">#设置单列的宽度，用字符个数表示，单个数据长度超出该数时以省略号表示</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;large_repr&#x27;</span>, <span class="string">&#x27;truncate&#x27;</span>) <span class="comment">#数据超过设置显示最大行列数时，带省略号显示/若是info则是统计信息显示</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;show_dimensions&#x27;</span>, <span class="literal">True</span>) <span class="comment">#当数据带省略号显示时，是否在最后显示数据的维度</span></span><br><span class="line"><span class="built_in">print</span>(df)</span><br><span class="line"></span><br><span class="line">pd.set_option(<span class="string">&#x27;max_info_columns&#x27;</span>, <span class="number">100</span>) <span class="comment">#当列数超过这个值时，调用df.info()函数时不会统计每列的非空值。</span></span><br><span class="line"><span class="built_in">print</span>(df.info())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将数据变成小数形式<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"> </span><br><span class="line">inputfile = <span class="string">&#x27;../data/electricity_data.xls&#x27;</span></span><br><span class="line">outputfile = <span class="string">&#x27;./electricity_data_analyze1.xls&#x27;</span></span><br><span class="line"> </span><br><span class="line">data = pd.read_excel(inputfile)</span><br><span class="line">data[<span class="string">u&#x27;线损率&#x27;</span>] = (data[<span class="string">u&#x27;供入电量&#x27;</span>]-data[<span class="string">u&#x27;供出电量&#x27;</span>])/data[<span class="string">u&#x27;供入电量&#x27;</span>]    <span class="comment">#data[u&#x27;线损率&#x27;]的类型为series； data[u&#x27;线损率&#x27;]为小数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data[<span class="string">u&#x27;线损率&#x27;</span>] = data[<span class="string">u&#x27;线损率&#x27;</span>].apply(<span class="keyword">lambda</span> x: <span class="built_in">format</span>(x, <span class="string">&#x27;.2%&#x27;</span>))    <span class="comment">#Series.apply()让序列的值依次在lambda函数中执行； data[&#x27;线损率&#x27;]由小数转化为百分数</span></span><br><span class="line"> </span><br><span class="line">data.to_excel(outputfile, index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 描述数据</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 表信息</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">df.info()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>显示数据的行列数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.shape</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看数据格式dtpyes</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>显示列名、元素</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.columns</span><br><span class="line">df.values</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li> 添加默认列名</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果数据没有标题行，可用pandas添加默认的列名</span></span><br><span class="line">df = pd.read_excel(<span class="string">&#x27;x.xlsx&#x27;</span>, header = <span class="literal">None</span>) </span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li> 显示前数据前5行</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.head(<span class="number">5</span>)</span><br><span class="line">df[[<span class="string">&#x27;标题&#x27;</span>, <span class="string">&#x27;客户端uv&#x27;</span>]].head()</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="7">
+<li>显示数据后5行</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.tail(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>值</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.values</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>读取a列</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;a&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="10">
+<li>找到重复值</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.duplicated()</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li> 显示数据唯一值（unique函数）</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据有0， 是因对缺失值进行了填充</span></span><br><span class="line">df[<span class="string">&#x27;经纪人级别&#x27;</span>].unique()</span><br></pre></td></tr></table></figure>
+
+
+<ol start="12">
+<li>对第几行数据不读取</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不读取哪里数据，可用skiprows=[i]，跳过文件的第i行不读取</span></span><br><span class="line">df = pd.read_excel(<span class="string">&#x27;x.xlsx&#x27;</span>,skiprows=[<span class="number">2</span>] ) </span><br></pre></td></tr></table></figure>
+
+<ol start="13">
+<li> 对缺失值进行识别</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 所有缺失值显示为True</span></span><br><span class="line">pd.insull(df)  <span class="comment"># df.isnull()</span></span><br></pre></td></tr></table></figure>
+
+<ol start="14">
+<li>计算</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#计算此data的数量</span></span><br><span class="line">df[<span class="string">&#x27;data&#x27;</span>].value_counts()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 升序计数</span></span><br><span class="line">df[<span class="string">&#x27;data&#x27;</span>].value_counts(ascending = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 升序计数并分组</span></span><br><span class="line">df[<span class="string">&#x27;data&#x27;</span>].value_counts(ascending = <span class="literal">True</span>, bins = <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计数</span></span><br><span class="line">df[<span class="string">&#x27;data&#x27;</span>].count()</span><br></pre></td></tr></table></figure>
+
+<ol start="15">
+<li>字符和数值之间的转化</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>()  <span class="comment"># 转化成整数</span></span><br><span class="line"><span class="built_in">float</span>()  <span class="comment"># 转化成整数</span></span><br><span class="line"><span class="built_in">str</span>()  <span class="comment"># 转化成整数</span></span><br><span class="line"><span class="built_in">type</span>()  <span class="comment"># 转化成整数</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="16">
+<li> 获取数据分布情况</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.describe()</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h2><ol>
+<li><p>删除空值 （dropna函数）</p>
+<p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/yuanxiang01/article/details/78738812">DataFrame中的空值处理</a></p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">df.dropna(how=<span class="string">&#x27;any&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df.dropna(how = <span class="string">&#x27;all&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">用法：DataFrame.drop(labels=None,axis=0, index=None, columns=None, inplace=False)</span><br><span class="line"></span><br><span class="line">参数说明：</span><br><span class="line">labels 就是要删除的行列的名字，用列表给定</span><br><span class="line">axis 默认为0，指删除行，因此删除columns时要指定axis=1；</span><br><span class="line">index 直接指定要删除的行</span><br><span class="line">columns 直接指定要删除的列</span><br><span class="line">inplace=False，默认该删除操作不改变原数据，而是返回一个执行删除操作后的新dataframe；</span><br><span class="line">inplace=True，则会直接在原数据上进行删除操作，删除后无法返回。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 删除包含 集团 二字 的行</span><br><span class="line"></span><br><span class="line">read_data = df[- df[&#x27;所属省份名称&#x27;].isin([&#x27;集团&#x27;])] </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>数值删除</li>
+</ol>
+<ul>
+<li>删除列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除列, axis=1表示删除列</span></span><br><span class="line">df.drop([<span class="string">&quot;销售额&quot;</span>, <span class="string">&quot;ID&quot;</span>], axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">df.drop(columns = [<span class="string">&quot;销售额&quot;</span>, <span class="string">&quot;ID&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 传入列位置</span></span><br><span class="line">df.drop(df.columns[[<span class="number">4</span>,<span class="number">5</span>]], axis =<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除行</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 删除行，筛选行名</span><br><span class="line">df.drop([&#x27;一&#x27;,&#x27;二&#x27;], axis = 0)</span><br><span class="line"></span><br><span class="line">df.drop(index = [&#x27;一&#x27;, &#x27;二&#x27;])</span><br><span class="line"></span><br><span class="line"># 删除行，筛选行索引</span><br><span class="line">df.drop(df.index[[0,1]], axis = 0)</span><br><span class="line"></span><br><span class="line"># 只要年龄小于40的用户</span><br><span class="line"></span><br><span class="line">df[df[&#x27;ID&#x27;] &lt; 40]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li> 填充（fillna函数）</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 空值用0填充</span></span><br><span class="line">df.fillna(value=<span class="number">0</span>)</span><br><span class="line">df.replace(np.NaN, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用均值对空值进行填充</span></span><br><span class="line">df[<span class="string">&#x27;时长&#x27;</span>].fillna(df[<span class="string">&#x27;时长&#x27;</span>].mean())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照不同列进行填充</span></span><br><span class="line">df.fillna(&#123;<span class="string">&#x27;性别&#x27;</span> : <span class="string">&#x27;男&#x27;</span>&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>更改数据格式，更改数据类型</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将数据格式int64,改为float格式</span></span><br><span class="line"></span><br><span class="line">df[<span class="string">&#x27;大区&#x27;</span>].astype(<span class="string">&#x27;float64&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>更改列名称, 修改列名。 </li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.columns = [[<span class="string">&#x27;导航&#x27;</span>,<span class="string">&#x27;uv&#x27;</span>, <span class="string">&#x27;pv&#x27;</span>,<span class="string">&#x27;户均点击&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">df.rename(columns=&#123;<span class="string">&#x27;IM渠道&#x27;</span>: <span class="string">&#x27;渠道&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>添加修改索引</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加索引</span></span><br><span class="line">df.index = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改索引,重新设置</span></span><br><span class="line">df = df.set_index[<span class="string">&#x27;标题&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重命名索引</span></span><br><span class="line">df.rename (index = &#123;<span class="number">1</span>: <span class="string">&#x27;一&#x27;</span>&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li> 重置索引</li>
+</ul>
+<p><img src="https://i.loli.net/2019/12/21/C7cxnGMVfFDeLEX.jpg" alt="图1"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.reset_index(level=<span class="literal">None</span>, drop=<span class="literal">False</span>, inplace=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认将所有index转化成columns</span></span><br><span class="line">df.reset_index()</span><br><span class="line"></span><br><span class="line"><span class="comment">#将第0级索引转化为 columns</span></span><br><span class="line">df.reset_index(level=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将原索引删除，不加入columns</span></span><br><span class="line">df.reset_index(drop = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="7">
+<li><p>删除重复值</p>
+<p> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/cocowool/p/8421997.html">Pandas删除数据的几种情况</a></p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认第一次出现的保留，其余删除</span></span><br><span class="line">df[<span class="string">&#x27;门店&#x27;</span>].drop_duplicates()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后一次出现的保留，其余删除</span></span><br><span class="line">df[<span class="string">&#x27;门店&#x27;</span>].drop_duplicates(keep = <span class="string">&#x27;last&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 多列去重</span></span><br><span class="line">df.drop_duplicates(subset = [<span class="string">&#x27;姓名&#x27;</span>, <span class="string">&#x27;唯一识别码&#x27;</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>对列表内的值进行替换</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 一对一替换</span></span><br><span class="line">df[<span class="string">&#x27;ID&#x27;</span>].replace(<span class="string">&#x27;1053&#x27;</span>, <span class="string">&#x27;110&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 多对一替换</span></span><br><span class="line">df[<span class="string">&#x27;ID&#x27;</span>].replace(&#123;<span class="string">&#x27;1053&#x27;</span>: <span class="string">&#x27;110&#x27;</span>, <span class="string">&#x27;230&#x27;</span>: <span class="string">&#x27;33&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df.columns.<span class="built_in">str</span>.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;_&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="对数据进行处理"><a href="#对数据进行处理" class="headerlink" title="对数据进行处理"></a>对数据进行处理</h2><ol>
+<li>对两个数据进行合并- merge, join, concat函数</li>
+</ol>
+<ul>
+<li>merge</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 按照轴把多个对象拼接起来</span></span><br><span class="line">pd.concat(df1, df2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># join函数适合根据索引进行合并，合并索引相同但列不同的对象</span></span><br><span class="line"><span class="comment"># merge函数，根据一个或多个键连接多行, 相当于excel中的vlookup</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将left和right进行合并</span></span><br><span class="line">pd.merge(left, right)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定以key为键进行合并</span></span><br><span class="line">pd.merge(left, right, on = <span class="string">&#x27;key&#x27;</span>)</span><br><span class="line"> pd.merge(name_3, name_1, left_on = [<span class="string">&#x27;ming&#x27;</span>], right_on = [<span class="string">&#x27;标记&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># key2列不相同的部分会直接舍弃掉</span></span><br><span class="line">pd.merge(left, right, on = [<span class="string">&#x27;key&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保留key2列不相同的部分</span></span><br><span class="line">pd.merge(left, right, on = [<span class="string">&#x27;key&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>], how = <span class="string">&#x27;outer&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不相同的部分指定以左表为基准</span></span><br><span class="line">pd.merge(left, right, on = [<span class="string">&#x27;key&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>], how = <span class="string">&#x27;left&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重复列名处理</span></span><br><span class="line"><span class="comment"># pd.merge()会自动给这些重复名添加后缀_x、_y，也可以自己命名。</span></span><br><span class="line">pd.merge(df1,df2, on = <span class="string">&#x27;id&#x27;</span>, suffixes= [<span class="string">&#x27;_L&#x27;</span>, <span class="string">&#x27;_R&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#按照索引进行合并</span></span><br><span class="line">pd.merge(df1,df2,left_index=<span class="literal">True</span>,right_index=<span class="literal">True</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li> concat函数, 按照标题进行拼接</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 普通合并</span></span><br><span class="line">pd.concat([df1, df2])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 索引设置</span></span><br><span class="line">pd.concat([df1, df2], ignore_index= <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并后删除重复值</span></span><br><span class="line">pd.concat([df1, df2], ignore_index = <span class="literal">True</span>).drop_duplicates()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>对数据进行排序</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 按照ID进行升序排列</span></span><br><span class="line"><span class="comment"># 按照ID进行降序排列</span></span><br><span class="line">df.sort_values(by = [<span class="string">&#x27;ID&#x27;</span>], ascending = <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在保证销售额列降序的情况下，对ID列进行升序处理</span></span><br><span class="line">data.sort_values(by = [<span class="string">&#x27;销售额&#x27;</span>, <span class="string">&#x27;ID&#x27;</span>],ascending = [<span class="literal">False</span>, <span class="literal">True</span>], inplace = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认将ID是缺失值的列显示在最后面</span></span><br><span class="line">df.sort_values(by = [<span class="string">&#x27;ID&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将ID是缺失值的列显示在最前面</span></span><br><span class="line">df.sort_values(by = [<span class="string">&#x27;ID&#x27;</span>], na_position = <span class="string">&#x27;first&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>对数值进行排名</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对应Excel中的 rank.avg函数</span></span><br><span class="line">df[<span class="string">&#x27;ID&#x27;</span>].rank(method= <span class="string">&#x27;average&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按值在所有的排列数据中出现的先后顺序排名</span></span><br><span class="line">df[<span class="string">&#x27;ID&#x27;</span>].rank(method = <span class="string">&#x27;first&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#  与Excel中rank.eq 函数的功能一样</span></span><br><span class="line">df[<span class="string">&#x27;ID&#x27;</span>].rank(method = <span class="string">&#x27;min&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 与min相反，取重复值对应的最大排名</span></span><br><span class="line">df[<span class="string">&#x27;ID&#x27;</span>].rank(method = <span class="string">&#x27;max&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li>对数据进行分组</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 如果price列的值&gt;3000，group列显示high，否则显示low</span><br><span class="line"></span><br><span class="line">df[&#x27;group&#x27;] = np.where(df[&#x27;客户当天发送消息数&#x27;] &gt; 5,&#x27;high&#x27;,&#x27;low&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 对符合多个条件进行分组</span><br><span class="line"># 符合经纪人级别为A1且经纪人响应时长&gt;24的在sign列显示为1</span><br><span class="line"></span><br><span class="line">df.loc[(df[&#x27;经纪人级别&#x27;] == &#x27;A1&#x27;) &amp; (df[&#x27;经纪人响应时长&#x27;]&gt;= 24.0), &#x27;sign&#x27;]=1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>对数据进行分列</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame((x.split(<span class="string">&#x27;网&#x27;</span>) <span class="keyword">for</span> x <span class="keyword">in</span> df[<span class="string">&#x27;客户注册渠道&#x27;</span>]),</span><br><span class="line">                index=df.index,columns=[<span class="string">&#x27;客户注册渠道&#x27;</span>,<span class="string">&#x27;size&#x27;</span>])</span><br><span class="line"></span><br><span class="line">&lt;!-- df = pd.DataFrame((x.split(<span class="string">&#x27;.&#x27;</span>) <span class="keyword">for</span> x <span class="keyword">in</span> 首页jhrj_1[<span class="string">&#x27;所属省份编码&#x27;</span>]),</span><br><span class="line">                index=df.index,columns=[<span class="string">&#x27;客户注册渠道&#x27;</span>,<span class="string">&#x27;size&#x27;</span>]) --&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分列完对数据进行合并</span></span><br><span class="line">df1 = pd.merge(首页jhrj_1, df, left_index = <span class="literal">True</span>, right_index = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="5">
+<li>新增一列</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = data.assign(ration = [4, 2, 5, 6, 7, 8, 2, 9, 4])</span><br><span class="line"></span><br><span class="line">data[&#x27;rations&#x27;] = [5, 2, 5, 6, 7, 8, 2, 9, 4]</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>对数据进行切分</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 指明切分区间</span><br><span class="line">pd.cut(df[&#x27;年龄&#x27;], bins = [0,3,6,10])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 将数据切成3份</span><br><span class="line">pd.qcut(df[&#x27;年龄&#x27;],3 )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>取出的数据， 指定取到小数点几位数？</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 取到小数点后3位</span><br><span class="line">for i in a :</span><br><span class="line">    print(&quot;%.3f&quot;%c)</span><br><span class="line"></span><br><span class="line"># 设置小数点位数，四舍五入</span><br><span class="line">df[&#x27;cnts&#x27;].round( decimals = 2)</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>将 list 格式转化成 DataFrame 格式</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(data, columns = [&#x27;省份&#x27;, &#x27;按钮名称&#x27;, &#x27;uv&#x27;, &#x27;pv&#x27;] )</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据选择"><a href="#数据选择" class="headerlink" title="数据选择"></a>数据选择</h2><ol>
+<li>选择某一列/ 某几列</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 普通索引- 根据名称进行选择</span></span><br><span class="line"></span><br><span class="line">df[<span class="string">&#x27;客户端uv&#x27;</span>]</span><br><span class="line"></span><br><span class="line">df[[<span class="string">&#x27;标题&#x27;</span>, <span class="string">&#x27;客户端uv&#x27;</span>]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 位置索引 / 切片索引， 根据所在第几列进行选择</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># : 表示选择所有的行， 逗号后面表示要选择列的位置区域</span></span><br><span class="line">df.iloc[:, [<span class="number">0</span>,<span class="number">2</span>]] <span class="comment"># 获取第1列和第3列的数值</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>选择某一行/某几行</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 普通索引-loc</span></span><br><span class="line"></span><br><span class="line">df.loc[<span class="string">&#x27;第一行&#x27;</span>]</span><br><span class="line"></span><br><span class="line">df.log[[<span class="string">&#x27;第一行&#x27;</span>, <span class="string">&#x27;第二行&#x27;</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 位置索引，切片索引</span></span><br><span class="line"></span><br><span class="line"> <span class="comment"># 选择第一行</span></span><br><span class="line">df.iloc[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择第一行和第二行</span></span><br><span class="line">df.iloc[[<span class="number">0</span>,<span class="number">1</span>]] </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li>根据指定条件进行筛选</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择年龄小于200的数据</span></span><br><span class="line">df[df[<span class="string">&#x27;年龄&#x27;</span>] &lt; <span class="number">200</span>] </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">#年龄小于200，且id小于300</span></span><br><span class="line">df[(df[<span class="string">&#x27;年龄&#x27;</span>] &lt; <span class="number">200</span>) &amp;   (df[<span class="string">&#x27;id&#x27;</span>] &lt; <span class="number">300</span>)]</span><br><span class="line"></span><br><span class="line">df[np.logical_and(df[<span class="string">&#x27;年龄&#x27;</span>] &gt; <span class="number">10</span>, df[<span class="string">&#x27;id&#x27;</span>] &gt; <span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># A列值大于10，或 B列值大于5</span></span><br><span class="line">df[(df[<span class="string">&#x27;A&#x27;</span>] &gt; <span class="number">10</span>) | (df[<span class="string">&#x27;C&#x27;</span>] &gt;<span class="number">20</span>)]</span><br><span class="line"></span><br><span class="line">df[np.logical_or(df[<span class="string">&#x27;A&#x27;</span>] &gt; <span class="number">10</span>, df[<span class="string">&#x27;C&#x27;</span>] &gt; <span class="number">20</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当 A列的值大于13时， 显示B，c列的值</span></span><br><span class="line">df[[<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>]][df[<span class="string">&#x27;A&#x27;</span>]&gt;<span class="number">13</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>行列同时选择</li>
+</ol>
+<ul>
+<li>普通索引+普通索引选择指定的行和列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[[<span class="string">&#x27;第一行&#x27;</span>, <span class="string">&#x27;第三行&#x27;</span>], [<span class="string">&#x27;订单号’, &#x27;</span>ID<span class="string">&#x27;]]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>位置索引 + 位置索引选择指定的行和列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[[<span class="number">0</span>,<span class="number">1</span>], [<span class="number">0</span>,<span class="number">2</span>]]</span><br><span class="line"></span><br><span class="line">df.iloc[<span class="number">0</span>:<span class="number">2</span>, <span class="number">1</span>:<span class="number">2</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>布尔索引+ 普通索引</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">&#x27;年龄&#x27;</span>]&lt; <span class="number">200</span>][[<span class="string">&#x27;订单编号&#x27;</span>, <span class="string">&#x27;ID&#x27;</span>]]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>切片索引+ 普通索引</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.ix[<span class="number">0</span>:<span class="number">2</span>, [<span class="string">&#x27;订单变化&#x27;</span>, <span class="string">&#x27;ID&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+
+
+<ol start="5">
+<li>按条件进行提取</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 用isin函数进行判断</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用isin函数根据特定值筛选记录。筛选A值等于10或者13的记录</span></span><br><span class="line">df[df.A.isin((<span class="number">10</span>, <span class="number">13</span>))]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看这一列是否包含某个值</span></span><br><span class="line">df[<span class="string">&#x27;级别&#x27;</span>].isin([<span class="string">&#x27;A3&#x27;</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment"># 先判断是否包含，然后将符合条件的数据提取出来。</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;级别&#x27;</span>].isin([<span class="string">&#x27;A3&#x27;</span>,<span class="string">&#x27;M4&#x27;</span>])]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h2 id="数据汇总"><a href="#数据汇总" class="headerlink" title="数据汇总"></a>数据汇总</h2><ol>
+<li>对数据进行分类 - group by函数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 按照某列分组求和</span></span><br><span class="line">df.groupby(<span class="string">&#x27;渠道&#x27;</span>).<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照多列分组求和</span></span><br><span class="line">df.groupby([<span class="string">&#x27;渠道&#x27;</span>, <span class="string">&#x27;ID&#x27;</span>]).<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对分组后的结果进行重新索引</span></span><br><span class="line">df.groupby(<span class="string">&#x27;渠道&#x27;</span>).<span class="built_in">sum</span>().reset_index()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li> aggregate方法</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对同一列 先做计数汇总运算，再做汇总运算</span></span><br><span class="line"></span><br><span class="line">df.group(<span class="string">&#x27;渠道&#x27;</span>).aggregate([<span class="string">&#x27;count&#x27;</span>, <span class="string">&#x27;sum&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 针对不同的列做不同的汇总运算</span></span><br><span class="line"></span><br><span class="line">df.groupby(<span class="string">&#x27;渠道&#x27;</span>).aggregate(&#123;<span class="string">&#x27;ID&#x27;</span> : <span class="string">&#x27;count&#x27;</span>,</span><br><span class="line">                              <span class="string">&#x27;销量&#x27;</span> : <span class="string">&#x27;sum&#x27;</span>&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>pivot_table-数据透视表</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为方便处理， 一般需要对结果进行重置索引</span></span><br><span class="line">pd.pivot_table(df, values = <span class="string">&#x27;ID&#x27;</span>, columns = <span class="string">&#x27;渠道&#x27;</span>,</span><br><span class="line">                index = <span class="string">&#x27;客户分类&#x27;</span>, aggfun = <span class="string">&#x27;count&#x27;</span>).reset_index()</span><br></pre></td></tr></table></figure>
+
+<p> pd.pivot_table(data, values, index, columns, aggfunc, fill_value, margins, dropna, margins_name = ‘All’)</p>
+<blockquote>
+<p>data: 数据<br>values: 对应的值<br>index: 对应的行<br>columns: 对应的列<br>aggfunc : 对values的计算类型<br>fill_value : 对空值的填充值<br>margins: 是否显示合计列<br>dropna: 是否删除缺失值，如果为真，则一整行全删除<br>margins_name: 合计列的列名</p>
+</blockquote>
+<ol start="4">
+<li>对数据进行映射</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 用map函数对字典进行映射， 新加一列</span><br><span class="line">data[&#x27;upper&#x27;] = data[&#x27;group&#x27;].map(dataUpper)</span><br></pre></td></tr></table></figure>
+
+
+<ol start="5">
+<li>数据采样</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 简单随机抽取sample</span><br><span class="line">df.sample(n=3)</span><br><span class="line"></span><br><span class="line"># 设置采样权重</span><br><span class="line"># 需要对每一行进行权重设置，列表行数少可行，过多不可行</span><br><span class="line"></span><br><span class="line"># 假设有4行数据，设置采样权重</span><br><span class="line">weights = [0, 0, 0.5, 0.5]</span><br><span class="line">df.sample(n=4, weights=weights)</span><br><span class="line"></span><br><span class="line">## 确定采样后是否放回</span><br><span class="line"># 采样后放回，True</span><br><span class="line">df.sample(n=6, replace=True)</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>统计计算</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计算每一列的个数</span></span><br><span class="line">df.count()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算每一行的个数</span></span><br><span class="line">df.count(axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求和</span></span><br><span class="line">df.<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line">df.<span class="built_in">sum</span>(axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 中位数</span></span><br><span class="line">df.median()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求和</span></span><br><span class="line">df.<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求最大值</span></span><br><span class="line">df.<span class="built_in">max</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求最小值</span></span><br><span class="line">df.<span class="built_in">min</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求众数</span></span><br><span class="line">df.mode()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求方差</span></span><br><span class="line">df.var()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求标准差</span></span><br><span class="line">df.std()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求分位数</span></span><br><span class="line">df.quantile(<span class="number">0.75</span>, axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 描述统计 describe函数</span></span><br><span class="line"><span class="comment">#自动生成数据的数量，均值，标准差等数据</span></span><br><span class="line"><span class="comment">#round（2）,显示小数点后面2位数，T转置</span></span><br><span class="line"></span><br><span class="line">df.describe().<span class="built_in">round</span>(<span class="number">2</span>).T</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标准差std()</span></span><br><span class="line">df[<span class="string">&#x27;经纪人响应时长&#x27;</span>].std()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 协方差cov</span></span><br><span class="line">df[<span class="string">&#x27;经纪人当天发送消息数&#x27;</span>].cov(df[<span class="string">&#x27;客户当天发送消息数&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相关性分析corr</span></span><br><span class="line">df[<span class="string">&#x27;客户当天发送消息数&#x27;</span>].corr(df[<span class="string">&#x27;经纪人当天发送消息数&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>数值计数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看不同值出现的次数， #默认进行排列</span></span><br><span class="line">df[<span class="string">&#x27;ID&#x27;</span>].value_counts()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看不同值出现的占比, #默认进行排列</span></span><br><span class="line">df[<span class="string">&#x27;ID&#x27;</span>].value_counts(normalize = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看不同值出现的占比， 不进行排列</span></span><br><span class="line"></span><br><span class="line">df[<span class="string">&#x27;ID&#x27;</span>].value_counts(normalize = <span class="literal">True</span>, sort = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+
+<ol start="8">
+<li>插入数据</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 insert方法中，指明要插入的位置、插入新列的列名，以及要插入的数据</span></span><br><span class="line">df.insert(<span class="number">2</span>, <span class="string">&#x27;销售品id&#x27;</span>, [<span class="string">&#x27;01&#x27;</span>, <span class="string">&#x27;02&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>对数据进行转置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.T</span><br></pre></td></tr></table></figure>
+
+<ol start="10">
+<li>索引重塑</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将表格型数据转化成树形数据</span></span><br><span class="line">df.stack()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将树形数据转化成表格型数据</span></span><br><span class="line">df.stack().unstack()</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/12/22/8dJwIqrSRTLYvnK.jpg" alt="索引重塑"></p>
+<ol start="11">
+<li>长宽表转换</li>
+</ol>
+<ul>
+<li>宽表<br><img src="https://i.loli.net/2019/12/22/plz94hj3vIuHA2B.jpg" alt="宽表"></li>
+<li>长表<br><img src="https://i.loli.net/2019/12/22/6XKpcg2RMoTaPmW.jpg" alt="长表"></li>
+</ul>
+<ul>
+<li>将长表转化成宽表,对数据进行透视, 相当于Excel中的数据透视表功能。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.pivot_table(index = [<span class="string">&#x27;computer&#x27;</span>,<span class="string">&#x27;name&#x27;</span>], columns = <span class="string">&#x27;year&#x27;</span>, values = <span class="string">&#x27;sale&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将宽表转换成长表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1： melt()</span></span><br><span class="line">df.melt(id_vars = [<span class="string">&#x27;company&#x27;</span>, <span class="string">&#x27;name&#x27;</span>], var_name = <span class="string">&#x27;year&#x27;</span>, value_name = <span class="string">&#x27;sale&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1： stack()</span></span><br><span class="line"><span class="comment"># 在保持行索引不变的前提下，将列索引转化成行索引 </span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/12/22/4pKoUMivFNIqzXu.jpg" alt="宽表转换成长表"></p>
+<hr>
+<h2 id="对字符串进行操作"><a href="#对字符串进行操作" class="headerlink" title="对字符串进行操作"></a>对字符串进行操作</h2><ol>
+<li> 大小写</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.lower()</span><br><span class="line">a.upper()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>长度</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 长度</span><br><span class="line">a.len()</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li> 去除空格</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.strip()</span><br><span class="line">a.lstrip()</span><br><span class="line">alrstrip()</span><br></pre></td></tr></table></figure>
+
+
+<ol start="5">
+<li>切分与分列、 合并</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#切分</span></span><br><span class="line">a.split(<span class="string">&#x27;_&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切分， 且成为新列</span></span><br><span class="line">a.split(<span class="string">&#x27;_&#x27;</span>, expand = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对切分进行限制, 只切1次</span></span><br><span class="line">a.split(<span class="string">&#x27;_&#x27;</span>, expand = <span class="literal">True</span>, n=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看是否包含</span></span><br><span class="line">a.<span class="built_in">str</span>.contains(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分列</span></span><br><span class="line">s.<span class="built_in">str</span>.get_dummies(sep= <span class="string">&#x27;|&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = 首页jhrj_1[<span class="string">&#x27;所属省份编码&#x27;</span>].<span class="built_in">str</span>.split(<span class="string">&#x27;.&#x27;</span>)  <span class="comment"># expand=True  可以把用分割的内容直接分列</span></span><br><span class="line">首页jhrj_1[<span class="string">&quot;所属省份编码1&quot;</span>]=df[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切分并在原表中进行合并</span></span><br><span class="line">首页jhrj_2 = pd.merge(首页jhrj_1, pd.DataFrame(首页jhrj_1[<span class="string">&#x27;所属省份编码&#x27;</span>].<span class="built_in">str</span>.split(<span class="string">&#x27;.&#x27;</span>, expand = <span class="literal">True</span>) ),</span><br><span class="line">               how = <span class="string">&#x27;left&#x27;</span>, left_index = <span class="literal">True</span>, right_index = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas对dataframe中的某一列使用split做字符串切割：</span></span><br><span class="line"><span class="comment"># words = df[&#x27;col&#x27;].split()</span></span><br><span class="line"><span class="comment"># 报错：</span></span><br><span class="line"><span class="comment"># AttributeError: &#x27;Series&#x27; object has no attribute &#x27;split&#x27;</span></span><br><span class="line"><span class="comment"># 原因是df[&#x27;col&#x27;]返回的是一个Series对象，需要先把Series对象转换为字符串：pandas.Series.str.split</span></span><br><span class="line"><span class="comment"># words = df[&#x27;col&#x27;].str.split()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">对两列数据进行合并</span><br><span class="line">df[<span class="string">&#x27;省份_名称&#x27;</span>] = df[<span class="string">&#x27;省份&#x27;</span>].<span class="built_in">str</span>.cat(df[<span class="string">&#x27;名称&#x27;</span>],sep = <span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">首页jdt_1[<span class="string">&#x27;省份_标题&#x27;</span>] = 首页jdt_1[<span class="string">&#x27;所属省份编码&#x27;</span>].astype(<span class="built_in">str</span>).<span class="built_in">str</span>.cat(首页jdt_1[<span class="string">&#x27;标题&#x27;</span>],sep = <span class="string">&#x27;_&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="日期-时间"><a href="#日期-时间" class="headerlink" title="日期-时间"></a>日期-时间</h2><ul>
+<li> 当前日期</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, time, timedelta</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回当前日期和时间</span></span><br><span class="line">datetime.now()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回当前时间的年</span></span><br><span class="line">datetime.now().year</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回当前时间的月份</span></span><br><span class="line">datetime.now().month</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回当前日期的日期</span></span><br><span class="line">datetime.now().day</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回当前时刻在周几</span></span><br><span class="line"><span class="comment"># python周几默认是从0开始的</span></span><br><span class="line">datatime.now.weekeday() + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回当前时间所在周的周数</span></span><br><span class="line">datatime.now.isocalendar()[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回指定日期</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只展现日期</span></span><br><span class="line">datetime.now.date()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只展示时间</span></span><br><span class="line">datetime.now.time()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前日期</span></span><br><span class="line">datetime.now().strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line"><span class="comment">#2018-12-22</span></span><br><span class="line"></span><br><span class="line">datetime.now.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&quot;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 将时间格式转化成字符串格式</span></span><br><span class="line"><span class="string">now=str( datetime.now())</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 将字符串格式转化为时间格式</span></span><br><span class="line"><span class="string">parse(str_now)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"># 往后推一天</span></span><br><span class="line"><span class="string">date+ Day(1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 往后推一个小时</span></span><br><span class="line"><span class="string">date + Hour(1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 往前推一天</span></span><br><span class="line"><span class="string">date - Day(1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 昨天</span></span><br><span class="line"><span class="string">ysd = now - timedelta(days = 1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#本月第一天</span></span><br><span class="line"><span class="string">ysd = now.replace(day = now.day-1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#  上月最后一天</span></span><br><span class="line"><span class="string">lastmonth_end = now.replace(day = now.day-1) - timedelta(days=1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 上月第一天</span></span><br><span class="line"><span class="string">lastmonth_first = now.replace(month = now.month-1, day =1)</span></span><br><span class="line"><span class="string">lastmonth_first = lastmonth_end.replace(day=1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#提取2016年11月2号的数据</span></span><br><span class="line"><span class="string">df[&#x27;</span><span class="number">2016</span>-<span class="number">11</span>-02<span class="string">&#x27; : &#x27;</span><span class="number">2016</span>-<span class="number">11</span>-02<span class="string">&#x27;]</span></span><br><span class="line"><span class="string">dt_time = dt.datetime(year = 2018, month=9, day = 17, hour = 22, minute = 43)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 构造时间序列， 构造十个日期， 每12分钟一次</span></span><br><span class="line"><span class="string">pd.Series(pd.date_range(start = &#x27;</span><span class="number">2018</span>-09-<span class="number">17</span> <span class="number">22</span>:<span class="number">43</span>:<span class="number">00</span><span class="string">&#x27;, periods = 10, freq = &#x27;</span>12<span class="built_in">min</span><span class="string">&#x27;))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 取所有8点到12点之间的数据, 不包含8点和12点</span></span><br><span class="line"><span class="string">data[(data.index.hour &gt; 8) &amp; (data.index.hour &lt; 12)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 包含8点到12点</span></span><br><span class="line"><span class="string">data.between_time(&#x27;</span>08:<span class="number">00</span><span class="string">&#x27;, &#x27;</span><span class="number">12</span>:<span class="number">00</span><span class="string">&#x27;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">import datetime</span></span><br><span class="line"><span class="string">from dateutil.relativedelta import relativedelta </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">begin = datetime.date(2019,1,1)</span></span><br><span class="line"><span class="string">end = datetime.date(2019,1,31)</span></span><br><span class="line"><span class="string">for i in range(1,10):</span></span><br><span class="line"><span class="string">    first = d + relativedelta(months=i)</span></span><br><span class="line"><span class="string">    last = end + relativedelta(months=i)</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>处理月与月之间时间不连续问题</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time </span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, time,timedelta</span><br><span class="line"><span class="comment"># 指定昨天</span></span><br><span class="line">df = datetime.now() - timedelta(days = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 月初第一天</span></span><br><span class="line">startdates = (df.replace(day = <span class="number">1</span>)).strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line"><span class="comment"># 昨天</span></span><br><span class="line">enddates = (df - timedelta(days = num)).strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line"><span class="comment"># 上月第一天</span></span><br><span class="line">last_moth_f = df.replace(month =df.month-<span class="number">1</span>, day=<span class="number">1</span>).__format__(<span class="string">&quot;%Y-%m-%d&quot;</span>)</span><br><span class="line"><span class="comment"># 上月最后一天</span></span><br><span class="line">last_moth_e = df.replace(month = df.month-<span class="number">1</span>, day =<span class="number">1</span>).strftime(<span class="string">&#x27;%Y-%m-31&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标值月份</span></span><br><span class="line">mubiao_dates = startdates[<span class="number">0</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将字符串转换为日期</span></span><br><span class="line">df = datetime.now() - timedelta(days = <span class="number">1</span>)</span><br><span class="line">day1 = (df.replace(day = <span class="number">1</span>)).strftime(<span class="string">&#x27;2019-11-%d&#x27;</span>)</span><br><span class="line">first = datetime.strptime(day1, <span class="string">&quot;%Y-%m-%d&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<!-- --------
+# 自动发送邮件
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import smtplib</span><br><span class="line">from email import encoders</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/12/23/uqFn819yGEjWRPQ.jpg" alt="123.jpg"><br><img src="https://i.loli.net/2019/12/23/Druqb2zyHi6ESQV.jpg" alt="456.jpg"> –&gt;</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">张宇</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2020/06/01/2020-08-12-%E6%8A%80%E8%83%BD-Python-pandas%E5%BA%93%E5%AD%A6%E4%B9%A0/">http://example.com/2020/06/01/2020-08-12-%E6%8A%80%E8%83%BD-Python-pandas%E5%BA%93%E5%AD%A6%E4%B9%A0/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">张宇</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Python/">
+                                    <span class="chip bg-color">Python</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2020/06/02/2021-02-24-%E6%8A%80%E8%83%BD-Hive-SQL%E5%AD%A6%E4%B9%A0/">
+                    <div class="card-image">
+                        
+                        <img src="https://brandgenetics.com/wp-content/uploads/2020/03/Hive-banner_26032020_revised-with-safe-space_option-2--1100x400.png" class="responsive-img" alt="技能-Hive-SQL学习">
+                        
+                        <span class="card-title">技能-Hive-SQL学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            HIVE从入门到进阶
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SQL/" class="post-category">
+                                    SQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/08/03/%E6%96%B9%E6%B3%95-%E6%95%B0%E6%8D%AE%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="数据异常分析方法">
+                        
+                        <span class="card-title">数据异常分析方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="post-category">
+                                    数据分析方法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">数据分析</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">异常分析</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

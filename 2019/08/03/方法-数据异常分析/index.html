@@ -1,0 +1,1461 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="数据异常分析方法, Hexo">
+    <meta name="description" content="如何针对异常数据进行分析作为一名数据分析师， 在工作中我们经常要对异常数据进行原因分析， 那么异常排查的方法都有哪些， 今天我们就来谈一谈。 
+首先，在进行分析前，我们需要做到以下几点：
+
+对此数据的业务理解是否准确。 比如：APP的日活是">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>数据异常分析方法 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">数据异常分析方法</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                                <span class="chip bg-color">数据分析</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/">
+                                <span class="chip bg-color">异常分析</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="post-category">
+                                数据分析方法
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2019-08-03
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="如何针对异常数据进行分析"><a href="#如何针对异常数据进行分析" class="headerlink" title="如何针对异常数据进行分析"></a>如何针对异常数据进行分析</h1><p>作为一名数据分析师， 在工作中我们经常要对异常数据进行原因分析， 那么异常排查的方法都有哪些， 今天我们就来谈一谈。 </p>
+<p>首先，在进行分析前，我们需要做到以下几点：</p>
+<ol>
+<li><p><strong>对此数据的业务理解是否准确。</strong> 比如：APP的日活是如何定义的， 是用户只要启动APP，还是用户必须在APP中有点击行为。</p>
+</li>
+<li><p><strong>数据的指标口径是否统一。</strong>  比如：某活动页面的 uv，是通过统计用户的手机号，还是统计用户 tracking_id 。不同的统计口径会导致数据出现差异。</p>
+</li>
+<li><p><strong>数据的产出过程是否明确。</strong> 比如：数据是如何从日志中进行清洗，是否会存在多发或漏发数据情况。</p>
+</li>
+<li><p><strong>寻找相关运营或产品人员进行沟通。</strong>询问运营人员关于此数据异常的见解，往往能够提高我们的分析效率。</p>
+</li>
+</ol>
+<p>接下来就是对异常原因的排查，常见的影响因素和方法有：</p>
+<ol>
+<li><p><strong>外部因素</strong>：时间因素、节假日活动、热点事件、政策影响等。</p>
+</li>
+<li><p><strong>内部因素</strong>： 部门运营活动、产品功能上线、大盘整体趋势、页面性能、SQL逻辑错误、数据指标口径调整等。</p>
+</li>
+<li><p><strong>多维度拆解法。</strong>从各个维度进行细分拆解，定位问题。比如：某产品活跃用户下降，那我们可以把活跃用户拆分成新用户、老用户、回流用户，然后针对不同的用户再进行细拆分析。</p>
+</li>
+</ol>
+<p>在查找出异常原因之后，我们还需要做到以下两点：</p>
+<ol>
+<li><p><strong>持续跟踪后续数据是否再次异常。</strong>在排查出原因并采取相应措施之后，我们需要持续跟踪数据，如果数据再次异常，那么说明给出的异常原因可能是错误的。</p>
+</li>
+<li><p><strong>对异常原因进行梳理，文档化。</strong></p>
+<blockquote>
+<ol>
+<li><strong>问题描述</strong>：什么时间、什么指标异常、异常幅度</li>
+<li><strong>主要结论</strong>：异常因素有哪些，各自的影响程度如何</li>
+<li><strong>后续跟进</strong>：后续的解决方案是什么，解决时间，再次验证是否异常。</li>
+<li><strong>具体分析过程</strong>：分析过程与详细分析数据</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<p>以上就是自己总结的数据异常原因分析，你还有哪些好用的分析方法，欢迎留言交流。</p>
+<p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/xO2lrEXr-lCkD6ZhQluCNQ">数据异常求生指南</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/SW0y1zOOMdJ01REk2hprvQ">数据分析之数据异常分析</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_WhFj4u9ptZa22jk2WLxDQ">日思619.数据异常了，如何分析？</a></p>
+<hr>
+<h1 id="工作中存在的分析问题"><a href="#工作中存在的分析问题" class="headerlink" title="工作中存在的分析问题"></a>工作中存在的分析问题</h1><p>本周 话费账单组kpi考核同比突降67万， 领导让我分析数据异常的原因。 </p>
+<p>在分析的过程中，自己主要犯了三个错误：</p>
+<ol>
+<li><p>自己一开始就对所有统计的按钮进行细拆， 而没有分功能模块进行细拆， 导致自己一开始只是看到 话费余额页面 和月账单页面下降， 而没有找到电子发票页面下降。 如果自己在细拆的对比中细心的话，自己也是可以找到的， 但是自己没有耐心做对比。 如果自己按照功能模块进行细拆对比， 就不会出现这样的情况。 </p>
+</li>
+<li><p>自己从一开始就没有搭建出一个整体的分析体系， 导致自己分析时，一会跑这个数据， 一会跑那个数据，从而使自己得出的结论没有说服力。<br>比如： 一开始，自己就跑话费余额数据， 但是跑着跑着发现口径有问题， 自己之前得出的结论竟然是错误的， 自己是先有了结论， 然后自己再找数据的， 这样会让自己再推翻自己的结论， 重新跑数据，特别的浪费时间。</p>
+</li>
+<li><p>数据的准确性不能保证， 自己跑的数据， 存在着比较明显的不合理之处， 口径不够明确， 给别人解释口径时不能够解释清楚。 </p>
+</li>
+</ol>
+<hr>
+<h1 id="如何分析业务数据"><a href="#如何分析业务数据" class="headerlink" title="如何分析业务数据"></a>如何分析业务数据</h1><p>问题陈述、产生假设、收集数据、分析数据、获取结论、采取行动</p>
+<ol>
+<li>评估和定位问题</li>
+</ol>
+<p>在深入研究任何类型的数据之前，应该快速找到你需要解决的真正问题，并用最简单的话定义它</p>
+<p>如果无法用简单的语言解释你要解决的业务问题，那么任何数据分析都无法解决问题。</p>
+<ol start="2">
+<li> 快速评估和定位问题的三问：</li>
+</ol>
+<ul>
+<li><p>这是否是系统异常导致的问题？</p>
+<blockquote>
+<p>下载量下跌，但激活量没有，也许是下载数据没有埋点或埋点错误？</p>
+</blockquote>
+</li>
+<li><p>这是更大问题的预兆吗？</p>
+<blockquote>
+<p>注册号码的下降是网站故障的指示吗？</p>
+</blockquote>
+</li>
+<li><p>你在看一个重要的度量指标吗？</p>
+<blockquote>
+<p>如果网站的转化率下降，但原始注册量没有下降， 那么就从一个紧急事件变成了一个谜团待揭开</p>
+</blockquote>
+</li>
+</ul>
+<ol start="3">
+<li> 确定潜在原因</li>
+</ol>
+<ul>
+<li><p>经验检索，快速寻找原因<br>根据经验，寻找任何明显的可能原因或问题的答案, 当你检查显示问题的来源或报告后，是否有任何异常原因立即浮现在脑海中？</p>
+<blockquote>
+<p>例如，你的电子商务网站的ssl认证可能过期，导致浏览器弹窗窗口警告数据不安全，从而显著降低购物车转化率</p>
+</blockquote>
+</li>
+<li><p>询问相关人员原因<br>这个问题会影响和涉及其他团队吗？如果是这样，他们是否对可能的原因有任何了解？即使问题与其他团队之间没有明显的联系，也有必要咨询一下。</p>
+<blockquote>
+<p>营销经理可能会问客户支持： 我注意到注册数据下降了，你能否想一想过去几周你发现过什么相关的变化吗？</p>
+</blockquote>
+</li>
+<li><p>创建假设<br>一个假设知识一个尚未得到证实的有根据的猜测。 在分析数据之前，清楚地说明问题的几个可能原因非常重要，这有助于防止常见的数据分析误区。</p>
+</li>
+</ul>
+<blockquote>
+<p>导致注册量突然下降的假设：</p>
+<ul>
+<li>某些地区的公众假期</li>
+<li>最近对营销网站的更改</li>
+<li>星期一网站中断导致注册过程中出现错误</li>
+<li>转换率下降减少了注册量</li>
+<li>产品页面在某搜索排名下降到搜索结果的第二页</li>
+</ul>
+</blockquote>
+<p>技术思维的方法——科学假设需具备的条件：</p>
+<ul>
+<li>涉及一个自变量和一个因变量</li>
+<li>它是可测试的</li>
+<li>它是可证伪的</li>
+</ul>
+<blockquote>
+<p>有时查看数据可能会产生一个新的假设，需要再次测试。最终，我们的假设会在下一步通过数据分析得到证实或反驳。</p>
+</blockquote>
+<ol start="4">
+<li> 分析数据</li>
+</ol>
+<ul>
+<li><p> 分割并确定相关数据指标<br>根据你的假设，你需要查看哪些数据？哪些指标可以帮助你证明或者反驳假设？</p>
+<blockquote>
+<p>你可以按国家/地区， 渠道和网络会话持续时间细分注册次数，以测试你的假设</p>
+</blockquote>
+</li>
+<li><p> 注意你的数据<br>基于你已知的业务指标，你可以判断数据是否出现异常？如果无基准线，请用历史数据作为起点。</p>
+<blockquote>
+<p>app注册量同比下降20%</p>
+</blockquote>
+</li>
+<li><p>评估异常或趋势的影响<br>经过前两个步骤，你要查看发现的趋势/异常是否足以解释问题</p>
+</li>
+</ul>
+<blockquote>
+<p>在寻找数据中的异常或趋势时，要注意这些异常或趋势不仅要具有统计意义，也要具有实际意义。我们需要弄清楚是什么会对我们发现的问题产生实际影响。</p>
+</blockquote>
+<p>统计显著性检验用于确定你注意到的异常是由于抽样误差还是适用于所有对象。 </p>
+<hr>
+<p>在上篇我们说到了如何对数据异常进行分析，这次我们来一道具体的数据分析面试问题。</p>
+<p>以下是一家公司APP一周每天的活跃率，如何你是分析师：</p>
+<ol>
+<li>从数据中你看到了什么问题？你觉得背后的原因是什么？</li>
+<li>如果你的老板要求你提一个运营运营改进计划，你会怎么做？</li>
+</ol>
+<p>分析答案：</p>
+<ol>
+<li><p>数据质量<br>数据采集， 数据接口， 数据存储</p>
+</li>
+<li><p>产品质量<br>版本更新， 版本BUG</p>
+</li>
+<li><p>渠道质量<br>渠道买量造假</p>
+</li>
+<li><p>活动质量<br>是否有重大活动</p>
+</li>
+<li><p>政策问题 –&gt;</p>
+</li>
+</ol>
+<hr>
+<h1 id="数据异常排查"><a href="#数据异常排查" class="headerlink" title="数据异常排查"></a>数据异常排查</h1><p>清楚以下三点：</p>
+<ol>
+<li>业务理解</li>
+<li>指标口径</li>
+<li>当前数据产出过程</li>
+</ol>
+<p>数据异常原因分析：</p>
+<ol>
+<li>数据有问题</li>
+</ol>
+<ul>
+<li>将时间轴拉长，看数据是近期异常还是历史异常，对比近三个月数据。</li>
+<li>查看和该指标关联的其他核心指标是否也异常，如果异常，也要一并查看。</li>
+<li>核查埋点是否有问题， 数据是否存在多发情况。</li>
+<li>业务口径是否有问题， 取的数据是不是真正需要的数据。</li>
+<li>写的sql逻辑是否有误， 或者android 和 ios 数据没有相加。 </li>
+</ul>
+<ol start="2">
+<li>业务发生了变化</li>
+</ol>
+<ul>
+<li>同口径下，同比环比数据是否异常， 在长时间轴的条件下进行对比</li>
+<li>进行细拆， 看到底是哪个指标的数据出现了异常， 将该指标和相关的指标一起进行对比</li>
+<li>与负责此指标的负责人进行沟通， 询问他们近期是否做了推广活动。</li>
+<li>产品最近是否发布了新版本，或者某个功能改版存在缺陷问题。 </li>
+</ul>
+<ol start="3">
+<li>其他因素影响</li>
+</ol>
+<ul>
+<li>假期效应： 开学季， 暑期， 四大节日，当地节日</li>
+<li>热点事件：常规热点如运动会，世界杯，其他热点事件</li>
+<li>活动影响： 双11， 618， 支付宝送红包</li>
+<li>政策影响： 金融监管</li>
+<li>底层系统故障： 服务器迁移导致数据丢失</li>
+<li>存在外部刷量作弊情况</li>
+<li>统计口径： 业务逻辑进行了更改， 之前某业务有统计， 但现在不统计了。  数据计算方式改变</li>
+</ul>
+<p>要对异常排查进行闭环</p>
+<ol>
+<li>持续跟踪后期数据是否再次异常<br>比如7.0版本数据存在多发现象， 但7.1版本开发说已更改， 当7.1版本发布之后， 要及时去查看数据是否再次异常。 </li>
+<li>对数据异常一定要记录， 对异常口径要留文档。</li>
+<li>邮件化， 当数据异常排查原因查明， 并且确认更改之后， 发邮件给相关方， 描述数据异常的影响范围和主要结论。 </li>
+</ol>
+<p>作为一名数据分析师， 一定要经常去看这三种报表，培养自己的数据敏感度，了解业务的各种核心指标。</p>
+<hr>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2019/08/03/%E6%96%B9%E6%B3%95-%E6%95%B0%E6%8D%AE%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/">http://example.com/2019/08/03/%E6%96%B9%E6%B3%95-%E6%95%B0%E6%8D%AE%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">John Doe</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                                    <span class="chip bg-color">数据分析</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/">
+                                    <span class="chip bg-color">异常分析</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2020/06/01/2020-08-12-%E6%8A%80%E8%83%BD-Python-pandas%E5%BA%93%E5%AD%A6%E4%B9%A0/">
+                    <div class="card-image">
+                        
+                        <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2743748018,437360056&fm=26&gp=0.jpg" class="responsive-img" alt="Python-Pandas库学习">
+                        
+                        <span class="card-title">Python-Pandas库学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Python数据处理常见用法
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/08/02/2020-03-22-%E7%94%9F%E6%B4%BB-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93-%E5%88%A9%E7%94%A8%E7%8E%AF%E5%A2%83%E6%9D%A5%E8%BE%85%E5%8A%A9%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E6%AD%A5/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="利用环境来辅助自己进步">
+                        
+                        <span class="card-title">利用环境来辅助自己进步</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    个人系统
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%BF%83%E7%90%86/">
+                        <span class="chip bg-color">心理</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%96%B9%E6%B3%95/">
+                        <span class="chip bg-color">方法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
