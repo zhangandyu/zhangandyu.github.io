@@ -659,7 +659,7 @@ tags:
   - Markdown
 ---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="模板首页蒙板颜色修改："><a href="#模板首页蒙板颜色修改：" class="headerlink" title="模板首页蒙板颜色修改："></a>模板首页蒙板颜色修改：</h3><p>主题中默认首页展示有颜色蒙板</p>
+<h3 id="模板首页蒙板颜色修改"><a href="#模板首页蒙板颜色修改" class="headerlink" title="模板首页蒙板颜色修改"></a>模板首页蒙板颜色修改</h3><p>主题中默认首页展示有颜色蒙板</p>
 <p><img src="https://i.loli.net/2021/11/14/nTKdRzUIuXqLpes.png" alt="5.png"></p>
 <p>如果想取消可以对以下参数进行修改：</p>
 <p>在主题文件的 <code>/source/css/matery.css</code> 文件中，搜索 <code>.bg-color</code> 来修改背景颜色：</p>
@@ -678,6 +678,25 @@ tags:
 
 <p>将参数<code>0.75</code>、<code>0.6</code>改成<code>0</code></p>
 <p><img src="https://i.loli.net/2021/11/14/eBuxZjVNmnLJ287.png" alt="6.png"></p>
+<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>从 Hexo5.0 版本开始自带了 <code>prismjs</code> 代码语法高亮的支持，本主题对此进行了改造支持。</p>
+<p>如果你的博客中曾经安装过 <code>hexo-prism-plugin</code> 的插件，那么你须要执行 <code>npm uninstall hexo-prism-plugin</code> 来卸载掉它，否则生成的代码中会有 <code>{</code> 和 <code>}</code> 的转义字符。</p>
+<p>然后，修改 Hexo 根目录下 <code>_config.yml</code> 文件中 <code>highlight.enable</code> 的值为 <code>false</code>，并将 <code>prismjs.enable</code> 的值设置为 <code>true</code>，主要配置如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">highlight:
+  enable: false
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: true
+  preprocess: true
+  line_number: true
+  tab_replace: ''<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>主题中默认的 <code>prismjs</code> 主题是 <code>Tomorrow Night</code>，如果你想定制自己的主题，可以前往 <a target="_blank" rel="noopener" href="https://prismjs.com/download.html">prismjs 下载页面</a> 定制下载自己喜欢的主题 <code>css</code> 文件，然后将此 css 主题文件取名为 <code>prism.css</code>，替换掉 <code>hexo-theme-matery</code> 主题文件夹中的 <code>source/libs/prism/prism.css</code> 文件即可。</p>
+<p>选择自己喜欢的主题并且下载：</p>
+<p>修改后的样式：</p>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p><a target="_blank" rel="noopener" href="https://pixabay.com/zh/photos/">免费版权图片网站</a></p>
 <p><a target="_blank" rel="noopener" href="https://sm.ms/">图床</a></p>
 
@@ -850,10 +869,10 @@ tags:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/14/v1---------2021-11-14-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+                <a href="/2021/11/14/2021-11-14-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-v1/">
                     <div class="card-image">
                         
                         <img src="https://i.loli.net/2021/11/14/QbCuvnRjZwNxVy9.jpg" class="responsive-img" alt="博客搭建及主题选择教程">
@@ -883,6 +902,7 @@ tags:
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
