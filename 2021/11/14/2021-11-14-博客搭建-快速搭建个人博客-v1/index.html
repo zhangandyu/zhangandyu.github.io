@@ -4,17 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="改版分析, 成长笔记">
-    <meta name="description" content="频道改版分析1.分析目的  新频道的效果怎么样？
-2.分析方向
-新频道整体改版效果分析。
-
-新频道各部分细拆分析新频道各主要区域细拆，看各区域数据是上升还是下降。
-
-新频道重点问题分析主要功能点流量入口修改后，流量如何分布。
-
-
-3. 分析">
+    <meta name="keywords" content="博客搭建及主题选择教程, 成长笔记">
+    <meta name="description" content="快速避开搭建博客的一些坑">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>改版分析 | 怪兽宇的小站</title>
+    <title>博客搭建及主题选择教程 | 怪兽宇的小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -277,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2021/11/14/QbCuvnRjZwNxVy9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">改版分析</h1>
+                    <h1 class="description center-align post-title">博客搭建及主题选择教程</h1>
                 </div>
             </div>
         </div>
@@ -398,12 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-                                <span class="chip bg-color">数据分析</span>
+                            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                                <span class="chip bg-color">博客</span>
                             </a>
                         
-                            <a href="/tags/%E6%94%B9%E7%89%88%E5%88%86%E6%9E%90/">
-                                <span class="chip bg-color">改版分析</span>
+                            <a href="/tags/hexo/">
+                                <span class="chip bg-color">hexo</span>
                             </a>
                         
                     </div>
@@ -414,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="post-category">
-                                数据分析方法
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-category">
+                                博客搭建
                             </a>
                         
                     </div>
@@ -427,7 +418,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-06-22
+                    2021-11-14
                 </div>
                 
 
@@ -443,119 +434,253 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="频道改版分析"><a href="#频道改版分析" class="headerlink" title="频道改版分析"></a>频道改版分析</h1><h2 id="1-分析目的"><a href="#1-分析目的" class="headerlink" title="1.分析目的"></a>1.分析目的</h2><p>  新频道的效果怎么样？</p>
-<h2 id="2-分析方向"><a href="#2-分析方向" class="headerlink" title="2.分析方向"></a>2.分析方向</h2><ol>
-<li><p>新频道整体改版效果分析。</p>
-</li>
-<li><p>新频道各部分细拆分析<br>新频道各主要区域细拆，看各区域数据是上升还是下降。</p>
-</li>
-<li><p>新频道重点问题分析<br>主要功能点流量入口修改后，流量如何分布。</p>
-</li>
+                <blockquote>
+<p>正所谓前人栽树，后人乘凉。</p>
+<p>感谢<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/commits?author=blinkfox">blinkfox</a>提供的<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery.git">博客模板</a></p>
+<p>为方便自己复习，教程教程转载于：[如何用Hexo+Github Pages快速搭建自己的博客]<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023346633">https://segmentfault.com/a/1190000023346633</a></p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>从 搭建博客之初，自己在换电脑工作的过程中多次丢失博客内容，特此写文章记录下博客搭建及模板配置教程，方便自己复习。 </p>
+<p>废话不多说了，开始进入正文。</p>
+<h1 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h1><h2 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h2><p>首先自己选个地方，创建一个文件夹，来装我们博客的主体。<br>比如F:Projectsblog，文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。</p>
+<p><img src="https://segmentfault.com/img/remote/1460000023346640/view"></p>
+<p>这时候，再bush中输入</p>
+<pre class="line-numbers language-none"><code class="language-none">hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+<p><img src="https://segmentfault.com/img/remote/1460000023346642"></p>
+<p>直接网页搜索localhost:4000，你的博客雏形就出来了。这TM才叫功夫不负有心人。</p>
+<p><img src="https://segmentfault.com/img/remote/1460000023346639/view"></p>
+<h2 id="github的使用"><a href="#github的使用" class="headerlink" title="github的使用"></a>github的使用</h2><p><strong>敲黑板！！！重点来了！！！</strong><br>部署博客到GIthub - Pages，文章开头不是说了吗，如果你了解git那么，这部分，你可以略过，小白们还是来学下。</p>
+<p>首先，注册个github账号吧，总不可能，用别人东西，还不给别人增加流量吧，拒绝白嫖，嘻嘻嘻，<strong>搭建好点赞你懂得</strong>！！！！</p>
+<p>进入正题，其实不要把github想的很难，主要是英文把你难着了吧，哈哈哈，如果英语差可以谷歌浏览器翻译。</p>
+<p>github其实就是个托管代码的，我们在这上面建库，然后把代码push上来，当然我们的博客不用push上来，后面讲解原理。</p>
+<p><img src="https://segmentfault.com/img/remote/1460000023346643/view"></p>
+<p id="Rename"></p>
+
+
+<h2 id="配置SSH钥匙："><a href="#配置SSH钥匙：" class="headerlink" title="配置SSH钥匙："></a>配置SSH钥匙：</h2><p>SSH是个协议，就像HTTPS一样，保证安全的。<br>我们要把项目托管上去，github需要知道一把钥匙，这是公钥，我们自己有一把钥匙，叫私钥。<br>下面配置：<br><strong>1.创建钥匙</strong></p>
+<pre class="line-numbers language-none"><code class="language-none"> $ ssh-keygen -t rsa -C "your_email@example.com"
+#这将按照你提供的邮箱地址，创建一对密钥
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>直接回车</p>
+<pre class="line-numbers language-none"><code class="language-none">Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">Your identification has been saved in /c/Users/you/.ssh/id_rsa.
+Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.
+The key fingerprint is:
+01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后钥匙的位置在用户文件下，叫做 <strong>.ssh</strong>,有个后缀是pub的，这个就是公钥，私钥是另一把，把公钥的内容复制下来，到github，点你的头像，有个setting，设置里去配置公钥。</p>
+<p><img src="https://i.loli.net/2021/11/14/Ql45fsRmcpYiBGh.png" alt="image-20211114013115263.png"></p>
+<p><img src="https://segmentfault.com/img/remote/1460000023346644/view"></p>
+<p>好了配置好公钥了，下面检查一下</p>
+<pre class="line-numbers language-none"><code class="language-none">$ ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">The authenticity of host 'github.com (207.97.227.239)' can't be established.
+RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输入yes就好了，下面就要设置用户信息了</p>
+<pre class="line-numbers language-none"><code class="language-none">$ git config --global user.name "github名字"//用户名
+$ git config --global user.email  "github注册的邮箱"//填写自己的邮箱<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>下面点击的你新建的仓库，有个：</p>
+<p><img src="https://segmentfault.com/img/remote/1460000023346645"></p>
+<p>复制你的项目地址，到Hexo的配置文件里：就是</p>
+<p><img src="https://segmentfault.com/img/remote/1460000023346646"></p>
+<p>找到deploy（部署），开始只有个type的，加上我写的，只用改repository就行了，branch不用改：</p>
+<pre class="line-numbers language-none"><code class="language-none">deploy:
+  type: git
+  repository: git@github.com:chenQD123/chenQD-blog.git
+  branch: master
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p><strong>避坑1</strong>：repository必须按照上面方式来写，不能写成<code>https</code>开头，否则会需输入账号密码。</p>
+<p><strong>避坑2</strong>：就是冒号后面有个空格，这是规定，如果没写空格，后面会部署失败，这就像python一样。</p>
+</blockquote>
+<p>然后就是美汁汁的部署你的博客到github上。</p>
+<h2 id="部署："><a href="#部署：" class="headerlink" title="部署："></a>部署：</h2><pre class="line-numbers language-none"><code class="language-none">hexo g
+hexo d
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>避坑</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">hexo d 出现以下错误：
+
+Branch 'master' set up to track remote branch 'main' from 'git@github.com:zhangandyu/zhangandyu.github.io.git'.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://i.loli.net/2021/11/14/BiSE8NTOjmpQoLg.png" alt="4.png"></p>
+<p>则需要的以下两个设置之一进行修改：</p>
+<blockquote>
+<pre class="line-numbers language-none"><code class="language-none">deploy:
+type: git
+repository: git@github.com:chenQD123/chenQD-blog.git
+branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+</blockquote>
+<blockquote>
+<p>hexo 默认分支为master， github仓库默认分支为 main， 如果上传后博客不能成功刷新，则需要修改github仓库默认分支， 或branch参数修改为main。</p>
+<p><img src="https://i.loli.net/2021/11/14/YOGI4sBUkATxwe3.png" alt="1234.png"></p>
+</blockquote>
+<h2 id="美化博客"><a href="#美化博客" class="headerlink" title="美化博客"></a>美化博客</h2><p>如果想使自己的博客好看点可以换主题：<br><a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=8eLR3W++7eNiMwHkYfsdUA==.Z47l5GuERtAlP/2xews5Q4aH8D9c530bdb2i6A1HlB0=">Hexo官网主题</a><br>建议换个，使用者多点的主题，这种的说明文档写的比较好，你开荒也会容易点。<br>美化博客你只需要点进官网开源的主题，然后找到这个主题的github链接，他会有详细教程的，从安装开始。</p>
+<p>我用的主题为：[matery](<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery%EF%BC%8C">https://github.com/blinkfox/hexo-theme-matery，</a> 具体安装教程见：<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">文档</a></p>
+<h3 id="文章-Front-matter-介绍"><a href="#文章-Front-matter-介绍" class="headerlink" title="文章 Front-matter 介绍"></a>文章 Front-matter 介绍</h3><p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但我仍然建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
+<table>
+<thead>
+<tr>
+<th>配置选项</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td><code>Markdown</code> 的文件标题</td>
+<td>文章标题，强烈建议填写此选项</td>
+</tr>
+<tr>
+<td>date</td>
+<td>文件创建时的日期时间</td>
+<td>发布时间，强烈建议填写此选项，且最好保证全局唯一</td>
+</tr>
+<tr>
+<td>author</td>
+<td>根 <code>_config.yml</code> 中的 <code>author</code></td>
+<td>文章作者</td>
+</tr>
+<tr>
+<td>img</td>
+<td><code>featureImages</code> 中的某个值</td>
+<td>文章特征图，推荐使用图床(腾讯云、七牛云、又拍云等)来做图片的路径.如: <code>http://xxx.com/xxx.jpg</code></td>
+</tr>
+<tr>
+<td>top</td>
+<td><code>true</code></td>
+<td>推荐文章（文章是否置顶），如果 <code>top</code> 值为 <code>true</code>，则会作为首页推荐文章</td>
+</tr>
+<tr>
+<td>hide</td>
+<td><code>false</code></td>
+<td>隐藏文章，如果<code>hide</code>值为<code>true</code>，则文章不会在首页显示</td>
+</tr>
+<tr>
+<td>cover</td>
+<td><code>false</code></td>
+<td><code>v1.0.2</code>版本新增，表示该文章是否需要加入到首页轮播封面中</td>
+</tr>
+<tr>
+<td>coverImg</td>
+<td>无</td>
+<td><code>v1.0.2</code>版本新增，表示该文章在首页轮播封面需要显示的图片路径，如果没有，则默认使用文章的特色图片</td>
+</tr>
+<tr>
+<td>password</td>
+<td>无</td>
+<td>文章阅读密码，如果要对文章设置阅读验证密码的话，就可以设置 <code>password</code> 的值，该值必须是用 <code>SHA256</code> 加密后的密码，防止被他人识破。前提是在主题的 <code>config.yml</code> 中激活了 <code>verifyPassword</code> 选项</td>
+</tr>
+<tr>
+<td>toc</td>
+<td><code>true</code></td>
+<td>是否开启 TOC，可以针对某篇文章单独关闭 TOC 的功能。前提是在主题的 <code>config.yml</code> 中激活了 <code>toc</code> 选项</td>
+</tr>
+<tr>
+<td>mathjax</td>
+<td><code>false</code></td>
+<td>是否开启数学公式支持 ，本文章是否开启 <code>mathjax</code>，且需要在主题的 <code>_config.yml</code> 文件中也需要开启才行</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>无</td>
+<td>文章摘要，自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要</td>
+</tr>
+<tr>
+<td>categories</td>
+<td>无</td>
+<td>文章分类，本主题的分类表示宏观上大的分类，只建议一篇文章一个分类</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>无</td>
+<td>文章标签，一篇文章可以多个标签</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>文章标题</td>
+<td>文章关键字，SEO 时需要</td>
+</tr>
+<tr>
+<td>reprintPolicy</td>
+<td>cc_by</td>
+<td>文章转载规则， 可以是 cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint 或 pay 中的一个</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>注意</strong>:</p>
+<ol>
+<li>如果 <code>img</code> 属性不填写的话，文章特色图会根据文章标题的 <code>hashcode</code> 的值取余，然后选取主题中对应的特色图片，从而达到让所有文章的特色图<strong>各有特色</strong>。</li>
+<li><code>date</code> 的值尽量保证每篇文章是唯一的，因为本主题中 <code>Gitalk</code> 和 <code>Gitment</code> 识别 <code>id</code> 是通过 <code>date</code> 的值来作为唯一标识的。</li>
+<li>如果要对文章设置阅读验证密码的功能，不仅要在 Front-matter 中设置采用了 SHA256 加密的 password 的值，还需要在主题的 <code>_config.yml</code> 中激活了配置。有些在线的 SHA256 加密的地址，可供你使用：<a target="_blank" rel="noopener" href="http://tool.oschina.net/encrypt?type=2">开源中国在线工具</a>、<a target="_blank" rel="noopener" href="http://encode.chahuo.com/">chahuo</a>、<a target="_blank" rel="noopener" href="http://tool.chinaz.com/tools/hash.aspx">站长工具</a>。</li>
+<li>您可以在文章md文件的 front-matter 中指定 reprintPolicy 来给单个文章配置转载规则</li>
 </ol>
-<h2 id="3-分析思路"><a href="#3-分析思路" class="headerlink" title="3. 分析思路"></a>3. 分析思路</h2><h3 id="3-1-新版本整体改版效果分析"><a href="#3-1-新版本整体改版效果分析" class="headerlink" title="3.1 新版本整体改版效果分析"></a>3.1 新版本整体改版效果分析</h3><ol>
-<li>改版后，新频道是否受欢迎。<br>衡量参数：</li>
-</ol>
-<ul>
-<li>页面访问uv占比大盘</li>
-<li>日均访问uv点击转化率</li>
-<li>日均点击uv占比大盘</li>
-<li>日均点击uv人均点击次数</li>
-<li>次1日留存</li>
-<li>次3日留存</li>
-<li>次7日留存</li>
-</ul>
-<p> 说明:</p>
-<ul>
-<li><p><strong>频道访问uv占比大盘</strong>，数据提升，说明频道改版后，用户更喜欢访问此频道。（用户访问此频道后，并不一定会在频道内产生点击）</p>
-</li>
-<li><p><strong>转化宽度： 日均访问uv点击转化率</strong> = 频道内点击uv / 频道内访问uv，点击转化率提升，说明用户查看此频道后，频道内功能点改版后对访问此频道的用户更有吸引力。</p>
-</li>
-<li><p><strong>日均点击uv占比大盘</strong>，数据提升，说明改版后吸引了更多的用户来进行点击。</p>
-</li>
-<li><p><strong>转化深度：日均点击uv人均点击次数</strong>，数据提升，说明改版后，用户的点击频率也有所增加。</p>
-</li>
-<li><p><strong>用户粘度：频道访问留存率提升</strong>， 说明改版后，此频道的用户粘性也在增加。</p>
-</li>
-</ul>
-<ol start="2">
-<li>改版后，频道留存率上升原因分析<br>主要为说明是某功能点使频道整体留存率上升。</li>
-</ol>
-<p> 公式：</p>
-<ul>
-<li>频道留存率 = A用户数 * A留存率 + 其他用户数 * 其他留存率</li>
-</ul>
-<p> 举例：</p>
-<ul>
-<li>旧版次7日留存率 = 26.8%签到用户 * 46.7%留存率 + 73.2%其他用户 * 24.7%留存率 = 30.6%</li>
-<li>新版次7日留存率 = 17.5%签到用户 * 48.8%留存率 + 82.5%其他用户 * 24.9留存率 = 29.1%</li>
-<li>说明：新版本频道次7日留存率下降1.5，主要是由于9.3%的用户次7日留存率从46.7%下降到24.9%</li>
-</ul>
-<h3 id="3-2-新频道各坑位细拆分析"><a href="#3-2-新频道各坑位细拆分析" class="headerlink" title="3.2 新频道各坑位细拆分析"></a>3.2 新频道各坑位细拆分析</h3><ol>
-<li>对频道中相同功能点进行新旧版本对比, 衡量参数：</li>
-</ol>
-<ul>
-<li>各个坑位点击uv占比访问uv</li>
-<li>各个坑位次7日留存率细拆</li>
-</ul>
-<ol start="2">
-<li>对1中数据差异较大坑位进行具体原因分析</li>
-</ol>
-<ul>
-<li>对各模块坑位具体原因进行分析说明</li>
-</ul>
-<h3 id="3-3-对改版后的某主要功能点的流量结构变化进行分析"><a href="#3-3-对改版后的某主要功能点的流量结构变化进行分析" class="headerlink" title="3.3 对改版后的某主要功能点的流量结构变化进行分析"></a>3.3 对改版后的某主要功能点的流量结构变化进行分析</h3><ul>
-<li>对新旧不同版本的流量结构进行梳理，找出主要流量入口变化，并进行说明。 </li>
-<li>用户究竟是如何使用产品新功能的，是否符合你预期设想的那样，还是说用户自己创造出了新的玩法</li>
-</ul>
-<h3 id="3-4-对产品流程转化率是否有提升"><a href="#3-4-对产品流程转化率是否有提升" class="headerlink" title="3.4 对产品流程转化率是否有提升"></a>3.4 对产品流程转化率是否有提升</h3><ul>
-<li>去观察整个产品的流程转化率是否因为产品迭代改版而有所提升。</li>
-<li>查看转化漏斗，改变前后，流程的转化数据是否发生变化，每个小环节的漏斗转化率有什么变化</li>
-</ul>
-<hr>
-<!-- <!-- ## 其他
- 
-具的操作只是帮你快速业务流程梳理出关键性的分析和指标体系，那么这些体系和指标的度量和之间的关系就要依靠统计学去界定和规范
+</blockquote>
+<p>以下为文章的 <code>Front-matter</code> 示例。</p>
+<h4 id="最简示例"><a href="#最简示例" class="headerlink" title="最简示例"></a>最简示例</h4><pre class="line-numbers language-none"><code class="language-none">---
+title: typora-vue-theme主题介绍
+date: 2018-09-07 09:25:00
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-一个网站改版了，新版的页面没有改变原来的交互操作，只是改变了视觉样式，用户访问量和点击量变化了，这些变化是好是坏?
+<h4 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h4><pre class="line-numbers language-none"><code class="language-none">---
+title: typora-vue-theme主题介绍
+date: 2018-09-07 09:25:00
+author: 赵奇
+img: /source/images/xxx.jpg
+top: true
+hide: false
+cover: true
+coverImg: /images/1.jpg
+password: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
+toc: false
+mathjax: false
+summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+categories: Markdown
+tags:
+  - Typora
+  - Markdown
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-1、我们已知的是改版前后点击量的数据和用户访问量的数据
-2 、我们想知道这个变化是好是坏
+<h3 id="模板首页蒙板颜色修改："><a href="#模板首页蒙板颜色修改：" class="headerlink" title="模板首页蒙板颜色修改："></a>模板首页蒙板颜色修改：</h3><p>主题中默认首页展示有颜色蒙板</p>
+<p><img src="https://i.loli.net/2021/11/14/nTKdRzUIuXqLpes.png" alt="5.png"></p>
+<p>如果想取消可以对以下参数进行修改：</p>
+<p>在主题文件的 <code>/source/css/matery.css</code> 文件中，搜索 <code>.bg-color</code> 来修改背景颜色：</p>
+<pre class="line-numbers language-none"><code class="language-none">/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */
+.bg-color {
+    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+}
 
+@-webkit-keyframes rainbow {
+   /* 动态切换背景颜色. */
+}
 
-要怎么做?算一下改版前后用户的百分比和点击量的百分，如果改版后用户量下降了，点击量下降了是不是改版就不成功?显然我们不能如此简单的看问题。要比较这两个样本，我们可以使用T检验。
+@keyframes rainbow {
+    /* 动态切换背景颜色. */
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-T检验(Student’s t test)是用于小样本(样本容量小于30，总体标准差σ未知的正态分布)的两个平均值差异程度的检验方法。
+<p>将参数<code>0.75</code>、<code>0.6</code>改成<code>0</code></p>
+<p><img src="https://i.loli.net/2021/11/14/eBuxZjVNmnLJ287.png" alt="6.png"></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p><a target="_blank" rel="noopener" href="https://pixabay.com/zh/photos/">免费版权图片网站</a></p>
+<p><a target="_blank" rel="noopener" href="https://sm.ms/">图床</a></p>
 
-我的置信区间是95%，所以如果sig<.05就代表差异显著。
-
-从表上看，改版前后点击量和用户数两项上差异并不显著，所以我们可以认为这次改版至少没引起什么不良的影响。
-
-
-当然现实问题往往更复杂，仅就改版为例，我们需要考虑很多问题，例如：
-
-1、改变了哪些内容? 外观还是交互方式?或者外观+交互方式?布局有什么变化?交互方式的变化对用户完成一个任务所需的步骤或点击次数是否有改变?
-2、改版前的数据采集了多少天?改版后的数据采集了多少天?
-3、改版前后的时期在每一年的相应劫夺，用户的访问量是否有显著变化?趋势是怎样的?  --
--------------------
-<!-- 
-# 8.  数据分析方法案例
-
-如何提高全站留存率？
-1. 选择高留存的行为，并选择其中比较容易扩大使用者面积的几个，在产品功能层面放大，让更多的人看到并发生转化，从而提升留存。
-2. 评估最终效果时，首先评估该功能的使用人群和占比是否有效提升，有则认为改进有效
-3. 以上主要因为产品在改进期间会同时发生很多其他改进，也会有各种不同的市场，运营活动，单纯用留存来评估，无法有效验证。
-
-例如：
-即刻产品的核心功能之一就是内容的分发，用户绝大多数的时间都在浏览关注、推荐和动态页的内容与评论。
-按照用户使用这些内容模块的行为，可以按其门槛和深浅分为路人行为（如浏览帖子）、围观行为（点击并查看评论）、普通参与行为（点赞、转发）、深度参与行为（发布评论）等。通过留存分析功能，发现行为深度越深，用户的留存就越高。
-但由于扩大发生参与行为的门槛过高，落地性也就较差。因此，选择围观行为，通过放大其面积来提升用户全站留存，所以，就在产品信息流列表页露出一条热评，一方面让更多的用户看到最精彩评论，另一方面更有力的引导用户点击查看更多内容。
-
-新增热评功能后，成功将阅读评论的用户比例提升，并且成功提高了全站留存 -->
                 
             </div>
             <hr/>
@@ -571,7 +696,7 @@ T检验(Student’s t test)是用于小样本(样本容量小于30，总体标�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">怪兽宇</a>
+                    <a href="/about" rel="external nofollow noreferrer">张宇</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -581,7 +706,7 @@ T检验(Student’s t test)是用于小样本(样本容量小于30，总体标�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhangandyu.github.io/2019/06/22/%E6%96%B9%E6%B3%95-%E6%94%B9%E7%89%88%E5%88%86%E6%9E%90/">https://zhangandyu.github.io/2019/06/22/%E6%96%B9%E6%B3%95-%E6%94%B9%E7%89%88%E5%88%86%E6%9E%90/</a>
+                    <a href="https://zhangandyu.github.io/2021/11/14/2021-11-14-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-v1/">https://zhangandyu.github.io/2021/11/14/2021-11-14-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-v1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -594,7 +719,7 @@ T检验(Student’s t test)是用于小样本(样本容量小于30，总体标�
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">怪兽宇</a>
+                    <a href="/about" target="_blank">张宇</a>
                     !
                 </span>
             </div>
@@ -619,12 +744,12 @@ T检验(Student’s t test)是用于小样本(样本容量小于30，总体标�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-                                    <span class="chip bg-color">数据分析</span>
+                                <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                                    <span class="chip bg-color">博客</span>
                                 </a>
                             
-                                <a href="/tags/%E6%94%B9%E7%89%88%E5%88%86%E6%9E%90/">
-                                    <span class="chip bg-color">改版分析</span>
+                                <a href="/tags/hexo/">
+                                    <span class="chip bg-color">hexo</span>
                                 </a>
                             
                         </div>
@@ -670,50 +795,51 @@ T检验(Student’s t test)是用于小样本(样本容量小于30，总体标�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/07/29/%E6%96%B9%E6%B3%95-%E5%A6%82%E4%BD%95%E7%94%A8%E6%95%B0%E6%8D%AE%E8%AF%B4%E8%AF%9D/">
+                <a href="/2021/11/14/2021-11-14-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-v1/">
                     <div class="card-image">
                         
+                        <img src="https://i.loli.net/2021/11/14/QbCuvnRjZwNxVy9.jpg" class="responsive-img" alt="博客搭建及主题选择教程">
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="如何用数据说话">
-                        
-                        <span class="card-title">如何用数据说话</span>
+                        <span class="card-title">博客搭建及主题选择教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            快速避开搭建博客的一些坑
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-07-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="post-category">
-                                    数据分析方法
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-category">
+                                    博客搭建
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-                        <span class="chip bg-color">数据分析</span>
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
                     </a>
                     
-                    <a href="/tags/%E6%8A%A5%E5%91%8A/">
-                        <span class="chip bg-color">报告</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
@@ -727,31 +853,30 @@ T检验(Student’s t test)是用于小样本(样本容量小于30，总体标�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/12/%E6%96%B9%E6%B3%95-%E5%B8%B8%E7%94%A8%E6%8C%87%E6%A0%87/">
+                <a href="/2021/11/14/v1---------2021-11-14-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
                     <div class="card-image">
                         
+                        <img src="https://i.loli.net/2021/11/14/QbCuvnRjZwNxVy9.jpg" class="responsive-img" alt="博客搭建及主题选择教程">
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="搭建业务运营指标">
-                        
-                        <span class="card-title">搭建业务运营指标</span>
+                        <span class="card-title">博客搭建及主题选择教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            快速避开搭建博客的一些坑
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-05-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="post-category">
-                                    数据分析方法
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-category">
+                                    博客搭建
                                 </a>
                             
                             
@@ -761,8 +886,12 @@ T检验(Student’s t test)是用于小样本(样本容量小于30，总体标�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B8%B8%E7%94%A8%E6%8C%87%E6%A0%87/">
-                        <span class="chip bg-color">常用指标</span>
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
