@@ -457,14 +457,14 @@
 
 
 
-<p><img src="https://segmentfault.com/img/remote/1460000023346642"></p>
+<p><img src="https://raw.githubusercontent.com/zhangandyu/zhangandyu.github.io/main/medias/images/2.png"></p>
 <p>直接网页搜索localhost:4000，你的博客雏形就出来了。这TM才叫功夫不负有心人。</p>
-<p><img src="https://segmentfault.com/img/remote/1460000023346639/view"></p>
+<p><img src="https://raw.githubusercontent.com/zhangandyu/zhangandyu.github.io/main/medias/images/3.png"></p>
 <h2 id="github的使用"><a href="#github的使用" class="headerlink" title="github的使用"></a>github的使用</h2><p><strong>敲黑板！！！重点来了！！！</strong><br>部署博客到GIthub - Pages，文章开头不是说了吗，如果你了解git那么，这部分，你可以略过，小白们还是来学下。</p>
 <p>首先，注册个github账号吧，总不可能，用别人东西，还不给别人增加流量吧，拒绝白嫖，嘻嘻嘻，<strong>搭建好点赞你懂得</strong>！！！！</p>
 <p>进入正题，其实不要把github想的很难，主要是英文把你难着了吧，哈哈哈，如果英语差可以谷歌浏览器翻译。</p>
 <p>github其实就是个托管代码的，我们在这上面建库，然后把代码push上来，当然我们的博客不用push上来，后面讲解原理。</p>
-<p><img src="https://segmentfault.com/img/remote/1460000023346643/view"></p>
+<p><img src="https://raw.githubusercontent.com/zhangandyu/zhangandyu.github.io/main/medias/images/4.png"></p>
 <p id="Rename"></p>
 
 
@@ -485,7 +485,7 @@ The key fingerprint is:
 
 <p>然后钥匙的位置在用户文件下，叫做 <strong>.ssh</strong>,有个后缀是pub的，这个就是公钥，私钥是另一把，把公钥的内容复制下来，到github，点你的头像，有个setting，设置里去配置公钥。</p>
 <p><img src="https://i.loli.net/2021/11/14/Ql45fsRmcpYiBGh.png" alt="image-20211114013115263.png"></p>
-<p><img src="https://segmentfault.com/img/remote/1460000023346644/view"></p>
+<p><img src="https://raw.githubusercontent.com/zhangandyu/zhangandyu.github.io/main/medias/images/5.png"></p>
 <p>好了配置好公钥了，下面检查一下</p>
 <pre class="line-numbers language-none"><code class="language-none">$ ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -498,9 +498,9 @@ Are you sure you want to continue connecting (yes/no)?<span aria-hidden="true" c
 $ git config --global user.email  "github注册的邮箱"//填写自己的邮箱<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>下面点击的你新建的仓库，有个：</p>
-<p><img src="https://segmentfault.com/img/remote/1460000023346645"></p>
+<p><img src="https://raw.githubusercontent.com/zhangandyu/zhangandyu.github.io/main/medias/images/6.png"></p>
 <p>复制你的项目地址，到Hexo的配置文件里：就是</p>
-<p><img src="https://segmentfault.com/img/remote/1460000023346646"></p>
+<p><img src="https://raw.githubusercontent.com/zhangandyu/zhangandyu.github.io/main/medias/images/7.png"></p>
 <p>找到deploy（部署），开始只有个type的，加上我写的，只用改repository就行了，branch不用改：</p>
 <pre class="line-numbers language-none"><code class="language-none">deploy:
   type: git
