@@ -6,7 +6,7 @@
   <link href="https://zhangandyu.github.io/atom.xml" rel="self"/>
   
   <link href="https://zhangandyu.github.io/"/>
-  <updated>2021-12-23T13:44:43.094Z</updated>
+  <updated>2022-02-10T14:57:14.044Z</updated>
   <id>https://zhangandyu.github.io/</id>
   
   <author>
@@ -15,6 +15,130 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从零开始机器学习</title>
+    <link href="https://zhangandyu.github.io/2022/02/08/2022-2-08-%E6%8A%80%E8%83%BD-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://zhangandyu.github.io/2022/02/08/2022-2-08-%E6%8A%80%E8%83%BD-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
+    <published>2022-02-07T16:00:00.000Z</published>
+    <updated>2022-02-10T14:57:14.044Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;基础概念&quot;&gt;&lt;a href=&quot;#基础概念&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="机器学习" scheme="https://zhangandyu.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="python" scheme="https://zhangandyu.github.io/tags/python/"/>
+    
+    <category term="算法" scheme="https://zhangandyu.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何用好搜索引擎</title>
+    <link href="https://zhangandyu.github.io/2021/12/26/2021-12-24-%E5%B7%A5%E5%85%B7-%E5%A5%BD%E7%94%A8%E7%9A%84%E6%90%9C%E7%B4%A2%E7%BD%91%E7%AB%99/"/>
+    <id>https://zhangandyu.github.io/2021/12/26/2021-12-24-%E5%B7%A5%E5%85%B7-%E5%A5%BD%E7%94%A8%E7%9A%84%E6%90%9C%E7%B4%A2%E7%BD%91%E7%AB%99/</id>
+    <published>2021-12-25T16:00:00.000Z</published>
+    <updated>2021-12-26T15:06:47.021Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;如何才能搜索更精确&quot;&gt;&lt;a href=&quot;#如何才能搜索更精确&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="搜索方法" scheme="https://zhangandyu.github.io/categories/%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/"/>
+    
+    
+    <category term="学习" scheme="https://zhangandyu.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="搜索" scheme="https://zhangandyu.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习方法总结</title>
+    <link href="https://zhangandyu.github.io/2021/12/25/2021-12-24-%E6%96%B9%E6%B3%95-%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://zhangandyu.github.io/2021/12/25/2021-12-24-%E6%96%B9%E6%B3%95-%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%AD%A6%E4%B9%A0/</id>
+    <published>2021-12-24T16:00:00.000Z</published>
+    <updated>2022-01-10T07:07:51.394Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;如何高效学习&quot;&gt;&lt;a href=&quot;#如何高效学习&quot; class=&quot;headerlink&quot; title=&quot;如何高效学习&quot;&gt;&lt;/a&gt;如何高效学习&lt;/h1&gt;&lt;h2 id=&quot;一、-设定合理的目标&quot;&gt;&lt;a href=&quot;#一、-设定合理的目标&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="方法" scheme="https://zhangandyu.github.io/categories/%E6%96%B9%E6%B3%95/"/>
+    
+    
+    <category term="学习" scheme="https://zhangandyu.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>三款常用的文档搜索工具</title>
+    <link href="https://zhangandyu.github.io/2021/12/24/2021-12-24-%E5%B7%A5%E5%85%B7-%E4%B8%89%E6%AC%BE%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%87%E6%A1%A3%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7%20-%20%E5%89%AF%E6%9C%AC/"/>
+    <id>https://zhangandyu.github.io/2021/12/24/2021-12-24-%E5%B7%A5%E5%85%B7-%E4%B8%89%E6%AC%BE%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%87%E6%A1%A3%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7%20-%20%E5%89%AF%E6%9C%AC/</id>
+    <published>2021-12-23T16:00:00.000Z</published>
+    <updated>2021-12-24T08:11:40.285Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;今天我要介绍三款常用的文档搜索工具，分别为：Everything、Listary、DocFetcher；&lt;/strong&gt; &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Everything 可快速搜索电脑中的文件。&lt;/li&gt;
+&lt;li&gt;Listary</summary>
+        
+      
+    
+    
+    
+    <category term="工具" scheme="https://zhangandyu.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="工具" scheme="https://zhangandyu.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据分析中必须掌握的算法基础</title>
+    <link href="https://zhangandyu.github.io/2021/12/23/2021-12-23-%E6%8A%80%E8%83%BD-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://zhangandyu.github.io/2021/12/23/2021-12-23-%E6%8A%80%E8%83%BD-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</id>
+    <published>2021-12-22T16:00:00.000Z</published>
+    <updated>2021-12-23T13:43:29.811Z</updated>
+    
+    
+    
+    
+    <category term="算法" scheme="https://zhangandyu.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="数学" scheme="https://zhangandyu.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>认知偏差知识手册</title>

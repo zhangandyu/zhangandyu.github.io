@@ -4,6 +4,135 @@
   
     
     <entry>
+      <title>从零开始机器学习</title>
+      <link href="/2022/02/08/2022-2-08-%E6%8A%80%E8%83%BD-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2022/02/08/2022-2-08-%E6%8A%80%E8%83%BD-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><p>在学习机器学习前，我们首先要了解什么是机器学习。</p><p>举个例子：假设有一天，你约了老王、老李周末一起打麻将，老李来了，但老王迟迟没有来，你准备打电话，老李说：“老王这周公司年终冲刺，加上儿子期末考试没及格，母亲又生病，肯定没心情来”。这种情况下，你觉得老王还会来吗，大概率是不会来了。</p><p>这种推理，我们人类很容易做到，但是对于机器，知道老王这些信息，要想推理出这个结论其实是非常困难的。 </p><p><strong>机器学习的好处，就是能够利用运算能力，从大量数据中发现一个模型，通过这个模型去进行推理，从而实现预测、判断的目的。这个建模的过程，就是机器”学习”的过程。</strong></p><p>要想让机器预测老王会不会来，我们就要建立“预测老王会不会来的函数”， “项目冲刺”、“儿子考试没及格”、”母亲生病“，就是输入到这个函数的自变量 <code>x1</code>、<code>x2</code>、<code>x3</code>, 这些变量每一个发生变化，都会影响到因变量<code>y</code>的结果。（来/不来）</p><p>在机器学习中，这些自变量就叫做<strong>特征</strong>， 因变量叫做<strong>标签</strong>。 在已知的数学基础上，通过反复计算，用一个函数来描述自变量 <code>x1</code>、<code>x2</code>、<code>x3</code>与因变量<code>y</code>之间的关系，这个过程叫做<strong>拟合</strong>。</p><p>因此，我们可以说：机器学习是机器训练出函数，而一般程序是我们人为定义好函数让程序去运行。 </p><p>那么我们该如何定义机器学习呢，在这里引用黄佳老师的定义：</p><blockquote><p>机器学习是一种从数据中生成规则、发现模型，来帮助我们预测、判断，分组和解决问题的技术。机器学习的本质就是在数据中发现规则。</p></blockquote><p>根据训练数据集是否有标签，我们可以将其分为三种：</p><ol><li>训练数据集全部有标签，叫<strong>监督学习</strong>。</li><li>训练数据集部分有标签，叫<strong>半监督学习</strong>。</li><li>训练数据集无标签，叫<strong>无监督学习</strong>。</li></ol><p>目前监督学习是应用最广的主流学习方法，也是我们学习机器学习的重点。 </p><hr><p>根据上面的内容，我们知道监督学习的训练数据集全部是有标签的，那么根据标签的特点，我们可以将其分成两类：<strong>回归问题和分类问题</strong>。</p><ol><li><p>回归问题</p><p>回归问题的标签是连续值，比如预测用户的转化率，用户的生命周期价值等。</p></li><li><p>分类问题</p><p>分类问题的标签是离散值，比如患者是否患病，老王会不会来打麻将。二选一或多选一。</p></li></ol><hr><p>**总结一下：机器学习的本质就是在数据中发现规律。机器学习可以分为：监督学习、半监督学习、无监督学习三种。其中监督学习主要解决两类问题：回归与分类问题。当我们在开始一个项目时，一定要先明确我们要解决的问题属于哪种，这对选择模型非常重要。 **</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何用好搜索引擎</title>
+      <link href="/2021/12/26/2021-12-24-%E5%B7%A5%E5%85%B7-%E5%A5%BD%E7%94%A8%E7%9A%84%E6%90%9C%E7%B4%A2%E7%BD%91%E7%AB%99/"/>
+      <url>/2021/12/26/2021-12-24-%E5%B7%A5%E5%85%B7-%E5%A5%BD%E7%94%A8%E7%9A%84%E6%90%9C%E7%B4%A2%E7%BD%91%E7%AB%99/</url>
+      
+        <content type="html"><![CDATA[<h2 id="如何才能搜索更精确"><a href="#如何才能搜索更精确" class="headerlink" title="如何才能搜索更精确"></a>如何才能搜索更精确</h2><ol><li><p>搜索的内容包含两个或以上关键词，可以用空格来隔开。</p><blockquote><p>例如【精神 网络】，但想搜索内容包含多个关键词中的一个，用竖线|隔开，例如【精神|网络】</p></blockquote></li><li><p>当你想搜索的内容不包含某些关键词，可以用减号来避开干扰信息。</p><blockquote><p>比如【托福 -广告 -推广】， 注意减号前面有空格，后面无空格。</p></blockquote></li><li><p>当希望精准搜索时，比如你想搜一段话，这个话一个词都不能少，则加个双引号。</p><blockquote><p>比如【“机器学习与人工智能”】，搜出来的页面只会出现完整的一整句话相关的页面。</p></blockquote></li><li><p>如果你只想看到标题中有这个关键词的网页，那就可以在前面加个搜索指令：intitle。</p><blockquote><p>比如你输入「intitle：跨年演讲」，就只能搜出来标题中含跨年演讲的网页。</p></blockquote></li><li><p>在用百度、谷歌等搜索引擎的时候，搜索框下面有个下拉菜单，可以选择时间期限内发布的网页。</p></li><li><p>当你想搜索影视、音乐、图书相关的内容，加上书名号《》会帮你避免很多麻烦。</p><blockquote><p>比如搜索「《格局》」这本书，加上书名号，就能排除其他信息。</p></blockquote></li><li><p>当你想快速找到某类文件，可以运用文件类型的搜索指令“Filetype”。</p><blockquote><p>比如你想搜索某公司研报，你就可以列「600519 深度研究 Filetype：pdf」，600519是上市公司代码，「Filetype：pdf」是定义文件格式，就能定向搜到该公司研报。</p></blockquote></li></ol><h2 id="常用的搜索网站"><a href="#常用的搜索网站" class="headerlink" title="常用的搜索网站"></a>常用的搜索网站</h2><h3 id="商用数据库"><a href="#商用数据库" class="headerlink" title="商用数据库"></a>商用数据库</h3><blockquote><p>主要是国家、行业、行业数据，但是有些需要付费</p></blockquote><p>万得 <a href="http://www.wind.com.cn/">http://www.wind.com.cn</a><br>彭博 <a href="http://bloomberg.com/">http://bloomberg.com</a><br>路透 <a href="http://cn.reuters.com/">http://cn.reuters.com</a><br>锐思 <a href="http://www.resset.cn/">http://www.resset.cn</a></p><h3 id="学术数据库"><a href="#学术数据库" class="headerlink" title="学术数据库"></a>学术数据库</h3><blockquote><p>国内外的一二手的期刊、论文等</p></blockquote><p>知网 <a href="http://www.cnki.net/">http://www.cnki.net</a><br>万方 <a href="http://www.wanfangdata.com.cn/">http://www.wanfangdata.com.cn</a><br>中国国家图书馆 <a href="http://www.nlc.cn/">http://www.nlc.cn/</a><br>维普 <a href="http://www.cqvip.com/">http://www.cqvip.com</a><br>EBSCO <a href="https://www.ebsco.com/">https://www.ebsco.com</a><br>数据圈 <a href="http://www.shujuquan.com/">http://www.shujuquan.com/</a><br>台湾学术数据库 <a href="http://fedetd.mis.nsysu.edu.tw/">http://fedetd.mis.nsysu.edu.tw/</a><br>台湾大学电子书 <a href="http://ebooks.lib.ntu.edu.tw/Home/ListBooks">http://ebooks.lib.ntu.edu.tw/Home/ListBooks</a><br>外国文献搜索SCI-hub <a href="https://sci-hub.se/">https://sci-hub.se/</a><br>科技方面的文献 <a href="https://www.sciencedirect.com/">https://www.sciencedirect.com/</a></p><h3 id="学习平台清单"><a href="#学习平台清单" class="headerlink" title="学习平台清单"></a>学习平台清单</h3><p>1.可汗学院： <a href="https://www.khanacademy.org/">https://www.khanacademy.org/</a></p><blockquote><p> 美国的免费学习网站，领域涵盖数学，历史，金融，物理，化学，生物学，天文学，经济学和计算机科学等。建议用英文原版网站，中文网站内容目前还比较少。</p></blockquote><p>2.Coursera：<a href="https://www.coursera.org/">https://www.coursera.org/</a></p><blockquote><p>世界最大的在线教育平台，包含各行业最前沿的知识，可以免费旁听所有课程。但如果你想获得课程结业证书，就需要付费或者申请奖学金抵用。</p></blockquote><p>3.Edx：<a href="https://www.edx.org/">https://www.edx.org/</a></p><blockquote><p>提供哈佛大学、麻省理工学院等一流顶级教育机构的免费课程，包括视频课程、讲座、教材和习题集等。</p></blockquote><p>4.多邻国：<a href="http://www.duolingo.cn/">http://www.duolingo.cn/</a></p><blockquote><p>语言类的免费学习网站，课程资源强大，包括了英语、法语、西班牙语、韩语、日语等多种语言。</p></blockquote><p>5.MIT-Open Course Ware：<a href="https://ocw.mit.edu/courses/find-by-topic/">https://ocw.mit.edu/courses/find-by-topic/</a></p><blockquote><p>麻省理工学院官方开办的免费学习网站。课程齐全，包含了课程视频、学习资料和书籍，甚至课程作业，就像你和麻省理工学院的学生一起上课一样。</p></blockquote><p>6.MasterClass ：<a href="https://www.masterclass.com/">https://www.masterclass.com/</a></p><blockquote><p>全球一流的流媒体平台，提供100多种课程，涵盖商务和领导力、摄影、烹饪、写作、表演、体育等各个领域。请各行业的大师、高手来给你授课。比如女魔头安娜·温图尔教你领导力课，斯蒂芬·库里教你打篮球，娜塔莉·波特曼教你表演。</p></blockquote><p>7.MOOC：<a href="https://www.icourse163.org/">https://www.icourse163.org/</a></p><blockquote><p>国内免费学习网站，包含了各个专业的国家级精品课程。</p></blockquote><p>8.Kadenze：<a href="https://www.kadenze.com/">https://www.kadenze.com/</a></p><blockquote><p>音乐、艺术、设计领域的学习平台，可学习各大艺术学院的课程。</p></blockquote><p>9.Dave Conservatoire：<a href="https://www.daveconservatoire.org/">https://www.daveconservatoire.org/</a></p><blockquote><p>免费的在线音乐学习网站，立志于“让每一个人都可以接受世界级的音乐教育”。目前，该网站已经有上百个音乐学习视频，在接受了音乐学习之后还可以进行自我测试。</p></blockquote><p>10.Codecademy：<a href="https://www.codecademy.com/">https://www.codecademy.com/</a></p><blockquote><p>一个在线编程类互动学习网站，即使零基础的程序爱好者都可以轻松入门，用户可以直接写代码并且进行测试，并通过一项项有趣的任务学习、积累和掌握编程技能。</p></blockquote><ol start="11"><li>zlibrary：<a href="https://book4you.org/">https://book4you.org/</a></li></ol><blockquote><p>免费的电子书下载网站</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 搜索方法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+            <tag> 搜索 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学习方法总结</title>
+      <link href="/2021/12/25/2021-12-24-%E6%96%B9%E6%B3%95-%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2021/12/25/2021-12-24-%E6%96%B9%E6%B3%95-%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%AD%A6%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="如何高效学习"><a href="#如何高效学习" class="headerlink" title="如何高效学习"></a>如何高效学习</h1><h2 id="一、-设定合理的目标"><a href="#一、-设定合理的目标" class="headerlink" title="一、 设定合理的目标"></a>一、 设定合理的目标</h2><p>在开始学习之前，要给自己定一个期限，并且写好学完后应达成的效果</p><p>需回答以下问题：</p><ol><li>你定的这个目标有啥用，完成之后能做什么？</li><li>目标什么时候开始，多长时间完成，截止日期是多少？</li><li>为了完成目标，你准备做哪些内容，准备每天完成还是每周、每月完成？</li><li>目标分为几个阶段，每个阶段做到什么程度就算完成了？</li></ol><h2 id="二、学习过程中的技巧"><a href="#二、学习过程中的技巧" class="headerlink" title="二、学习过程中的技巧"></a>二、学习过程中的技巧</h2><h4 id="1-设定环境场"><a href="#1-设定环境场" class="headerlink" title="1. 设定环境场"></a>1. 设定环境场</h4><p>指定一个空间，只用来学习。比如坐在书桌前就只学习，要玩得去其他地方。通过营造一种环境场，来帮助自己进入学习状态。</p><h4 id="2-学习前，先提问"><a href="#2-学习前，先提问" class="headerlink" title="2. 学习前，先提问"></a>2. 学习前，先提问</h4><p>通过问问题，让自己快速进入学习的状态。</p><p>​    1） 根据这个标题，我认为他主要是谈什么问题？</p><p>​    2） 在学之前，关于这个问题，我知道些什么，我的观点是什么？</p><p>​    3)    在接下来的学习中，我最想解决的问题是什么？</p><h4 id="3-记笔记"><a href="#3-记笔记" class="headerlink" title="3 . 记笔记"></a>3 . 记笔记</h4><p>要用自己的话语对书中知识点进行总结。前提是自己理解，而不是对着书中内容一顿猛抄。</p><h4 id="4-给自己制造反馈"><a href="#4-给自己制造反馈" class="headerlink" title="4. 给自己制造反馈"></a>4. 给自己制造反馈</h4><p>​      1）讲给别人听</p><p>​            在讲给别人时，发现自己哪里卡顿，是否能清晰的表达，对方追问的问题自己是否能解答，自己能举例让对方明白吗。如果不能，说明自己还没理解清楚。</p><p>​        2） 通过写作（通过自己的话语）、录音、视频的方式表达文章观点，然后自己回看去发现问题。</p><h2 id="三、学习完成后如何验收"><a href="#三、学习完成后如何验收" class="headerlink" title="三、学习完成后如何验收"></a>三、学习完成后如何验收</h2><h4 id="1-总结"><a href="#1-总结" class="headerlink" title="1. 总结"></a>1. 总结</h4><p>自己真正把学到的知识运用到工作生活中后，自己得总结出运用这项知识的关键点有哪些。只有做完总结，自己才算吧这个知识真正内化到自己的能力中了。</p><h4 id="2-以教为学"><a href="#2-以教为学" class="headerlink" title="2. 以教为学"></a>2. 以教为学</h4><p>通过通俗易懂的方式，输出文章、视频等。通过把这个知识教给别人，来考验自己是否真正掌握了这项知识。（费曼学习法）</p><h2 id="四、如何扩大自己的知识面"><a href="#四、如何扩大自己的知识面" class="headerlink" title="四、如何扩大自己的知识面"></a>四、如何扩大自己的知识面</h2><ol><li><strong>带着急需解决某个问题去读相关书籍，先刷书，后精读。</strong></li></ol><p>先根据目录直接翻到自己感兴趣内容，如果发现没有收获直接换下一本。用这种方式迅速打开视野，快速筛选出那些真正值得逐字精读的好书。</p><p>在精读时，可用一根手指指着你要看的那行字，逐字阅读。手指移动到哪，视线就跟到哪。通过这种方式聚焦你的注意力。</p><blockquote><p>在读一本书的时候，要以自己为中心，而不是以一本书为中心。 你买这本书，不是为了看书里别人是怎么想的，而是从这本书里的想法中得到启发，能够完善自己的想法。</p></blockquote><ol start="2"><li>搜索，看视频教程，请教专业人士。</li></ol><hr><h2 id="想学啥，先定目标"><a href="#想学啥，先定目标" class="headerlink" title="想学啥，先定目标"></a>想学啥，先定目标</h2><h4 id="目标：学会如何学习"><a href="#目标：学会如何学习" class="headerlink" title="目标：学会如何学习"></a>目标：学会如何学习</h4><ol><li><p>你完成这个目标之后能干啥</p><p>完成这个目标，我就可以系统的掌握学习的方法，能够快速的学习一门知识，而不是像一个无头苍蝇在门外乱撞，迟迟入不了门。</p></li><li><p>你的目标什么时候开始，多长时间完成，截止时间是什么时候？</p><p>开始日期：2021年12月26日</p><p>时间长度：1个月</p><p>结束日期：2022年1月25日</p></li><li><p>为了完成这个目标，你准备怎么做，时间频率是怎么样的？</p><ul><li><p><input checked="" disabled="" type="checkbox">  学习《脱不花-怎样成为高效学习的人》</p></li><li><p><input checked="" disabled="" type="checkbox">  学习《许芩-如何成为有效学习的高手》</p></li><li><p><input checked="" disabled="" type="checkbox">  学习 得到、极客时间上其他讲师的学习方法论</p></li><li><p><input checked="" disabled="" type="checkbox">  学会如何学习—-<a href="https://book.douban.com/subject/34923186/">https://book.douban.com/subject/34923186/</a></p></li><li><p><input checked="" disabled="" type="checkbox">  如何学习——–<a href="https://book.douban.com/subject/27081766/">https://book.douban.com/subject/27081766/</a></p></li><li><p><input checked="" disabled="" type="checkbox">  学习之道——-<a href="https://book.douban.com/subject/26895988/">https://book.douban.com/subject/26895988/</a></p><blockquote><p>准备先看专栏，每天最少看一篇，总结笔记，并且写自己的感想</p></blockquote></li></ul></li><li><p>目标分为几个层次，每个层次做到什么程度算完成了？</p><p>目标分为三个层次</p><p>层次1：  完成得到、极客时间学习方法论总结，并且形成笔记与感想</p><p>层次2： 完成书籍研究，形成自己的学习方法论</p><p>层次3：能够熟练利用自己的学习方法论进行学习，能够快速学习自己想学习的任何课程</p></li></ol><h4 id="目标：掌握机器学习内容"><a href="#目标：掌握机器学习内容" class="headerlink" title="目标：掌握机器学习内容"></a>目标：掌握机器学习内容</h4><ol><li><p>你定这个目标有啥用，学完之后能做什么？</p><p>学习机器学习为自己专业上必须会的内容，学习机器学习精进自己专业领域的知识。</p></li><li><p>目标什么时候开始，多长时间完成，截止日期是多少？</p><p>开始时间：1月9号</p><p>结束时间：5月1号</p><p>时长： 110天</p></li><li><p>为了完成目标，你准备做哪些内容，准备每天完成还是每周、每月完成？</p><p>学习内容：</p><ul><li><input disabled="" type="checkbox"> 学习书籍：《机器学习实战：基于Scikit-Learn、Keras和TensorFlow：原书第2版》</li><li><input disabled="" type="checkbox"> 学习课程：《人工智能基础课》</li><li><input disabled="" type="checkbox"> 学习课程：《机器学习40讲》</li><li><input disabled="" type="checkbox"> 学习课程：《推荐系统三十六式》</li><li><input disabled="" type="checkbox"> 学习课程：《成为AI产品经理》</li><li><input disabled="" type="checkbox"> 学习课程：《AI技术内参》</li><li><input disabled="" type="checkbox"> 学习课程：《零基础实战机器学习》——学习书籍：《零基础实战机器学习》</li><li><input disabled="" type="checkbox"> 视频视频课程：机器学习（Machine Learning）- 吴恩达（Andrew Ng）</li><li><input disabled="" type="checkbox"> 学习书籍：《白话机器学习的数学》</li><li><input disabled="" type="checkbox"> 学习书籍：《美团机器学习实践》</li><li><input disabled="" type="checkbox"> 学习书籍：《漫画机器学习入门》</li></ul></li><li><p>目标分为几个阶段，每个阶段做到什么程度就算完成了？</p><p>截止2月9号，学完：极客时间课程《零基础实战机器学习》， 书本：《漫话机器学习入门》</p><p>截止3月9号， 学完：极客时间课程《机器学习40讲》，书本《机器学习实战：基于Scikit-Learn、Keras和TensorFlow：原书第2版》</p><p>截止4月9号，学完：极客时间课程《推荐系统三十六式》、《人工智能基础课》中机器学习内容、《白话机器学习的数学》</p><p>截止5月1号，学完：极客时间课程《成为AI产品经理》、《AI技术内参》、《美团机器学习实践》中内容</p><p>能够知道机器学习的项目流程，能知道调用什么代码，能完成一个具体的项目。 </p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 方法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>三款常用的文档搜索工具</title>
+      <link href="/2021/12/24/2021-12-24-%E5%B7%A5%E5%85%B7-%E4%B8%89%E6%AC%BE%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%87%E6%A1%A3%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7%20-%20%E5%89%AF%E6%9C%AC/"/>
+      <url>/2021/12/24/2021-12-24-%E5%B7%A5%E5%85%B7-%E4%B8%89%E6%AC%BE%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%87%E6%A1%A3%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7%20-%20%E5%89%AF%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<p><strong>今天我要介绍三款常用的文档搜索工具，分别为：Everything、Listary、DocFetcher；</strong> </p><ul><li>Everything 可快速搜索电脑中的文件。</li><li>Listary 不仅对文件进行搜索，还可搜索已安装软件并快速启动。</li><li>DocFetcher 可对电脑文件内的内容进行搜索，适合查找文件资料，</li></ul><p>以下为三款应用的介绍：</p><h3 id="Everything"><a href="#Everything" class="headerlink" title="Everything"></a>Everything</h3><p>下载地址：<a href="https://www.voidtools.com/downloads/">https://www.voidtools.com/downloads/</a></p><blockquote><p>Everything 是一款系统实用软件，可帮助你<strong>查找存储在 Windows 设备上的任何文件或文件夹</strong>。它的工作速度非常快，并实时为用户提供结果。虽然<strong>Everything 搜索应用程序</strong>除了搜索数据之外不执行任何操作，但它可以高效地完成这项工作，并且不会占用太多系统资源。</p></blockquote><p>执行界面为：</p><p><img src="https://raw.githubusercontent.com/zhangandyu/picture/main/%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87/22.png"></p><p>Everything 默认是全盘搜索的，可以点击搜索结果顶部栏分别按照名称、路径、大小、修改时间进行排序。</p><p><img src="https://raw.githubusercontent.com/zhangandyu/picture/main/%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87/23.png"></p><h3 id="Listary"><a href="#Listary" class="headerlink" title="Listary"></a>Listary</h3><p>下载地址：<a href="http://www.listary.com/download">http://www.listary.com/download</a></p><blockquote><p>Listary 是一个<strong>快速查找文件和启动应用程序</strong>的软件。</p></blockquote><p>自己主要用 Listary 来快速启动应用， 双击 Ctrl 键调出 Listary 搜索框输入程序名，按 ↑ 键或 ↓ 键进行切换，按 Enter 回车即可打开相应的应用、文件夹或文件。 </p><p>执行界面为：</p><p><img src="https://raw.githubusercontent.com/zhangandyu/picture/main/%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87/24.png"></p><p>最近使用中经常会出现搜索结果不用打开的情况，只能退出应用重启，大家有好的办法也可留言告诉我下。</p><p><img src="https://raw.githubusercontent.com/zhangandyu/picture/main/%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87/21.png"></p><h3 id="DocFetcher"><a href="#DocFetcher" class="headerlink" title="DocFetcher"></a>DocFetcher</h3><p>下载地址：<a href="http://docfetcher.sourceforge.net/en/download.html">http://docfetcher.sourceforge.net/en/download.html</a></p><blockquote><p>DocFetcher 是一个开源桌面搜索应用程序：它允许您搜索计算机上文件的内容。— 您可以将其视为本地文件的 Google搜索。</p></blockquote><p>DocFetcher 主要作为上面两个应用的补充，用来搜索电脑的文件内容，速度非常快，当只记住某个文件里的一些内容，但又不记得文件名称时，这个软件就非常有效了，支持常见的 doc、pdf、ppt、txt、html等格式。</p><p>执行界面为：</p><p><img src="https://raw.githubusercontent.com/zhangandyu/picture/main/%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87/19.png"></p><p>使用前，DocFetcher需要创建索引来加速搜索。你可以针对自己希望搜索的文件夹建立索引。在上图的<strong>搜索范围</strong>的空白处点右键，<strong>选择创建索引——文件夹</strong>，这样就可以选择之后搜索范围，选择好文件夹后点击<strong>运行</strong>即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据分析中必须掌握的算法基础</title>
+      <link href="/2021/12/23/2021-12-23-%E6%8A%80%E8%83%BD-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2021/12/23/2021-12-23-%E6%8A%80%E8%83%BD-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>认知偏差知识手册</title>
       <link href="/2021/12/15/2021-12-15-%E8%AE%A4%E7%9F%A5%E5%81%8F%E5%B7%AE%E7%9F%A5%E8%AF%86%E6%89%8B%E5%86%8C/"/>
       <url>/2021/12/15/2021-12-15-%E8%AE%A4%E7%9F%A5%E5%81%8F%E5%B7%AE%E7%9F%A5%E8%AF%86%E6%89%8B%E5%86%8C/</url>
