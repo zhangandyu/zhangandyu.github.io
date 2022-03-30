@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="怪兽宇的小站" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="怪兽宇的小站" type="application/atom+xml">
 </head>
 
 
@@ -472,6 +472,254 @@
 </ol>
 <hr>
 <p>**总结一下：机器学习的本质就是在数据中发现规律。机器学习可以分为：监督学习、半监督学习、无监督学习三种。其中监督学习主要解决两类问题：回归与分类问题。当我们在开始一个项目时，一定要先明确我们要解决的问题属于哪种，这对选择模型非常重要。 **</p>
+<h1 id="线性回归算法实战"><a href="#线性回归算法实战" class="headerlink" title="线性回归算法实战"></a>线性回归算法实战</h1><p>机器学习项目从开始到结束可以分为五步：</p>
+<ol>
+<li>定义问题</li>
+<li>收集数据和预处理</li>
+<li>选择算法和确认模型</li>
+<li>训练拟合模型</li>
+<li>评估并优化模型性能</li>
+</ol>
+<h2 id="项目1：通过广告投放金额预测商品销售额"><a href="#项目1：通过广告投放金额预测商品销售额" class="headerlink" title="项目1：通过广告投放金额预测商品销售额"></a>项目1：通过广告投放金额预测商品销售额</h2><p>项目内容: 假设你开了一家网店，把过去每周的广告投放金额及销售额整理后，你发现网店商品的销售额和广告投放力度息息相关。那能不能通过机器学习算法，根据过去记录历史数据，来预测未来某个节点，一个特定的广告投放金额对应能实现的商品销售额？</p>
+<table>
+<thead>
+<tr>
+<th>公众号广告投放金额</th>
+<th>微博广告投放金额</th>
+<th>其他类型广告投放金额</th>
+<th>商品销售额（千元）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>304.4</td>
+<td>93.6</td>
+<td>294.4</td>
+<td>9.7</td>
+</tr>
+<tr>
+<td>1011.9</td>
+<td>34.4</td>
+<td>398.4</td>
+<td>16.7</td>
+</tr>
+<tr>
+<td>1091.1</td>
+<td>32.8</td>
+<td>295.2</td>
+<td>17.3</td>
+</tr>
+<tr>
+<td>85.5</td>
+<td>173.6</td>
+<td>403.2</td>
+<td>7</td>
+</tr>
+<tr>
+<td>1047</td>
+<td>302.4</td>
+<td>553.6</td>
+<td>22.1</td>
+</tr>
+<tr>
+<td>940.9</td>
+<td>41.6</td>
+<td>155.2</td>
+<td>17.2</td>
+</tr>
+<tr>
+<td>1277.2</td>
+<td>111.2</td>
+<td>296</td>
+<td>16.1</td>
+</tr>
+</tbody></table>
+<h3 id="1-定义问题"><a href="#1-定义问题" class="headerlink" title="1. 定义问题"></a>1. 定义问题</h3><p>在这个环节中，我们需要理清当前的业务场景，明确<strong>目前的痛点、要解决什么问题、达到什么目标、当前问题属于哪一种机器学习类型？</strong></p>
+<p>1）痛点</p>
+<p>​    加大广告投放力度是否能促进商品的销售额增长，是否有数据可参考</p>
+<p>2）问题</p>
+<ul>
+<li>各种广告和销售额之间呈现一种什么关系？</li>
+<li>哪一种广告对于商品销售额的影响最大？</li>
+<li>是否能根据特性的广告投放金额，预测出未来的商品销售额？</li>
+</ul>
+<p>3）目标</p>
+<p>​    建立一个机器学习模型，根据广告投放金额，预测商品销售额</p>
+<p>4）机器学习类型</p>
+<p>​    要估计销售额，所以在这个数据集中：公众号广告投放金额、微博广告投放金额、其他类型广告投放金额为<strong>特征</strong>。商品销售额为<strong>标签</strong>。因为数据集全部有标签，所以这是一个<strong>监督学习</strong>， 销售额标签为连续值，所以这是一个<strong>回归问题</strong>。数据集里有三个特征，所以是一个<strong>多元回归问题</strong>。</p>
+<h3 id="2-收集数据和预处理"><a href="#2-收集数据和预处理" class="headerlink" title="2. 收集数据和预处理"></a>2. 收集数据和预处理</h3><p>这部分主要分为6个步骤：</p>
+<ul>
+<li><strong>收集数据</strong>—网店广告及销售数据</li>
+<li><strong>数据可视化</strong>—了解数据的基本情况</li>
+<li><strong>数据清洗及规范化</strong>—处理缺失值、重复数据、错误数据、格式统一</li>
+<li><strong>特征工程</strong>—降低数据集维度</li>
+<li><strong>构建特征集及标签集</strong></li>
+<li><strong>拆分训练集、验证集和测试集</strong></li>
+</ul>
+<h4 id="1）收集数据"><a href="#1）收集数据" class="headerlink" title="1）收集数据"></a>1）收集数据</h4><p>这一步一般要通过数据埋点及购买、抓取等方式来获得，在这个项目中，我们可以从<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1xkUPei2-t2THe4N4EaO8Yw">这里</a>来获得，密码：1234。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd  <span class="token comment"># 导入pandas库</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np   <span class="token comment"># 导入numpy库</span>
+
+<span class="token comment"># 读取数据</span>
+data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'advertising.csv'</span><span class="token punctuation">)</span>
+data<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment"># 读取前5行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">公众号</th>
+<th align="right">微博</th>
+<th align="right">其他</th>
+<th align="right">销售额</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">304.4</td>
+<td align="right">93.6</td>
+<td align="right">294.4</td>
+<td align="right">9.7</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">1011.9</td>
+<td align="right">34.4</td>
+<td align="right">398.4</td>
+<td align="right">16.7</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">1091.1</td>
+<td align="right">32.8</td>
+<td align="right">295.2</td>
+<td align="right">17.3</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">85.5</td>
+<td align="right">173.6</td>
+<td align="right">403.2</td>
+<td align="right">7.0</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">1047.0</td>
+<td align="right">302.4</td>
+<td align="right">553.6</td>
+<td align="right">22.1</td>
+</tr>
+</tbody></table>
+<h4 id="2）数据可视化（python"><a href="#2）数据可视化（python" class="headerlink" title="2）数据可视化（python)"></a>2）数据可视化（python)</h4><h5 id="相关性热力图"><a href="#相关性热力图" class="headerlink" title="* 相关性热力图"></a>* 相关性热力图</h5><p>通过相关性系数来了解数据集中任意一对变量之间的相关性。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt <span class="token comment"># 导入画图工具库</span>
+plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'font.sans-serif'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'SimHei'</span><span class="token punctuation">]</span> <span class="token comment"># 用来正常显示中文为黑体</span>
+plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">False</span> <span class="token comment">#用来正常显示负号</span>
+<span class="token keyword">import</span> seaborn <span class="token keyword">as</span> sns <span class="token comment"># 导入统计学数据可视化库</span>
+
+<span class="token comment"># 相关性分析</span>
+<span class="token comment"># 对所有的标签和特征两两显示其相关性的热力图</span>
+sns<span class="token punctuation">.</span>heatmap<span class="token punctuation">(</span>data<span class="token punctuation">.</span>corr<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cmap <span class="token operator">=</span> <span class="token string">'PuBuGn'</span><span class="token punctuation">,</span>annot <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://raw.githubusercontent.com/zhangandyu/picture/main/%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87/25.png"></p>
+<p>从图中我们可以明显看到：微信公众号和销售额的相关性最高。</p>
+<h5 id="散点图"><a href="#散点图" class="headerlink" title="* 散点图"></a>* 散点图</h5><p>通过散点图两两一组展现销售额与各渠道广告投放金额之间的关系，来将重点聚焦。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 显示销售额与各种渠道广告投放金额的散点图</span>
+sns<span class="token punctuation">.</span>pairplot<span class="token punctuation">(</span>data<span class="token punctuation">,</span> 
+             x_vars <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'公众号'</span><span class="token punctuation">,</span><span class="token string">'微博'</span><span class="token punctuation">,</span><span class="token string">'其他'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            y_vars <span class="token operator">=</span> <span class="token string">'销售额'</span><span class="token punctuation">,</span>
+            height <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> aspect <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> kind <span class="token operator">=</span> <span class="token string">'scatter'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://raw.githubusercontent.com/zhangandyu/picture/main/%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87/26.png"></p>
+<h4 id="3-数据清洗及规范化"><a href="#3-数据清洗及规范化" class="headerlink" title="3)数据清洗及规范化"></a>3)数据清洗及规范化</h4><h5 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h5><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 查看是否有缺失值</span>
+data<span class="token punctuation">.</span>isna<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 查看是否有重复值</span>
+data<span class="token punctuation">.</span>duplicated<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>从运行结果可知，数据无缺失及重复值，我们暂时不需要处理。 </p>
+<h5 id="把数据规范化"><a href="#把数据规范化" class="headerlink" title="把数据规范化"></a>把数据规范化</h5><p>通过上面数据可视化，我们发现在3个特征中，微信公众号广告投放金额和商品销售金额的相关性比较高。因此，为简化模型，我们先只考虑公众号广告投放金额数据。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>data<span class="token punctuation">.</span>公众号<span class="token punctuation">)</span> <span class="token comment"># 构建特征集，只含微信公众号一个特征</span>
+y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>data<span class="token punctuation">.</span>销售额<span class="token punctuation">)</span> <span class="token comment"># 构建标签集，销售额</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>在机器学习中，我们需要把数据转换成矩阵格式后才能让算法进行处理。 一般矩阵被称为2D张量，形式为：（样本数，特征数），比如一组数据的矩阵为（200,3），则说明这组数据中有 200个样本数量，3个特征。 </p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'矩阵x的维度：'</span><span class="token punctuation">,</span> x<span class="token punctuation">.</span>ndim<span class="token punctuation">)</span>     <span class="token comment"># ndim返回的是数组的维度</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'矩阵x的形状：'</span> <span class="token punctuation">,</span>x<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>    <span class="token comment"># 查看矩阵或者数组的维数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>输出结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">矩阵x的特征：1
+矩阵x的形状：(200,)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<p>机器学习模型所读取的规范格式应该为（样本数，标签数）的格式， 而我们目前的矩阵x形状为（200，），需要将其变成为（200,1） 的格式，然后才能进行机器学习。 需要用到<code>reshape</code>函数。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> x<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> y<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'矩阵x的维度：'</span><span class="token punctuation">,</span> x<span class="token punctuation">.</span>ndim<span class="token punctuation">)</span>     <span class="token comment"># ndim返回的是数组的维度</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'矩阵x的形状：'</span><span class="token punctuation">,</span> x<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>    <span class="token comment"># 查看矩阵或者数组的维数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出结果为：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">矩阵x的维度：<span class="token number">2</span>
+矩阵x的形状：<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>这样，我们就把数据转换成了需要的格式。 </p>
+<h4 id="4）特征工程"><a href="#4）特征工程" class="headerlink" title="4）特征工程"></a>4）特征工程</h4><p>暂不考虑</p>
+<h4 id="5）构建特征集及标签集"><a href="#5）构建特征集及标签集" class="headerlink" title="5）构建特征集及标签集"></a>5）构建特征集及标签集</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># x 为构建特征集</span>
+<span class="token comment"># y 为构建标签集</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="6）拆分训练集、验证集和测试集"><a href="#6）拆分训练集、验证集和测试集" class="headerlink" title="6）拆分训练集、验证集和测试集"></a>6）拆分训练集、验证集和测试集</h4><p>在开始建模之前，我们还需要将数据集拆分成两个部分：<strong>训练集</strong>和<strong>测试集</strong>。在一个机器学习的项目中，至少要包含着两个数据集，<strong>一个用于训练机器，确定模型。另一个用户测试模型的准确性。</strong> 往往还需要一个<strong>验证集</strong>，以在最终测试之前增加验证环境。目前项目问题比较简单且数据量少，所以合并了验证和测试的环节。 </p>
+<p>在拆分之前，如果数据已经被排序或分类，则要先进性打乱。 </p>
+<p>根据二八原则，将数据分成80%的训练集和20%的测试集。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 将数据分成80%训练集和20%测试集</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+x_train<span class="token punctuation">,</span> x_test<span class="token punctuation">,</span>y_train<span class="token punctuation">,</span>y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span> test_size <span class="token operator">=</span> <span class="token number">0.2</span><span class="token punctuation">,</span> random_state <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>现在原始数据变成了四个数据集，分别是：</p>
+<ul>
+<li>x_train（特征训练集）</li>
+<li>y_train（标签训练集）</li>
+<li>x_test（特征测试集）</li>
+<li>y_test（标签测试集）</li>
+</ul>
+<p>以上我们就完成了：定义问题及收集数据和预处理前两部的内容。</p>
+<hr>
+<h3 id="3-选择算法并建立模型"><a href="#3-选择算法并建立模型" class="headerlink" title="3. 选择算法并建立模型"></a>3. 选择算法并建立模型</h3><h4 id="确定选用什么模型"><a href="#确定选用什么模型" class="headerlink" title="确定选用什么模型"></a>确定选用什么模型</h4><p>根据上图，我们能够明确知道，选用<strong>线性回归算法</strong>能够满足我们的需求。 </p>
+<p>在机器学习中的一元线性回归的公式为：<br>$$<br>y = w*x + b<br>$$<br>在机器学习中， 我斜率w叫做权重， 截距b叫做偏置。</p>
+<p>虽然已经选定用线性回归算法，但是在算法工具包<code>sklean</code>中又有很多线性回归算法包，比如基本的线性回归算法<code>LinearRegression</code>，以及衍生出来的<code>lasso</code>回归和<code>Ridge</code>回归。</p>
+<p>哪一个才是合适的算法包，一般来说我们得一个个试，从最简单的开始，直到找到满意的结果为止。 在这个项目中，我们选用最基本的回归算法包<code>LinearRegression</code>。</p>
+<p>3） 建立模型（外部参数默认， 内部参数为： 权重w 和截距b）</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 调用 LinearRegression</span>
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>linear_model <span class="token keyword">import</span> LinearRegression  <span class="token comment"># 导入模型</span>
+linereg_model <span class="token operator">=</span> LinearRegression<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 使用线性回归算法创建模型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-训练模型"><a href="#4-训练模型" class="headerlink" title="4. 训练模型"></a>4. 训练模型</h3><p>训练模型就是用训练集中的特征变量和标签，根据当前样本的损失大小来逐渐拟合函数，确定最优的内部参数，最后完成模型。</p>
+<p>1）训练数据集</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+linereg_model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>x_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span> <span class="token comment"># 用训练集数据进行训练，拟合函数，确认内部参数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 
             </div>
