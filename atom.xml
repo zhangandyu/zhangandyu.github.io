@@ -64,9 +64,9 @@
     <category term="搜索方法" scheme="https://zhangandyu.github.io/categories/%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/"/>
     
     
-    <category term="学习" scheme="https://zhangandyu.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="搜索" scheme="https://zhangandyu.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
+    
+    <category term="学习" scheme="https://zhangandyu.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -175,6 +175,31 @@
   </entry>
   
   <entry>
+    <title>Tableau学习教程</title>
+    <link href="https://zhangandyu.github.io/2021/11/14/2021-11-14-Tableau%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91-6/"/>
+    <id>https://zhangandyu.github.io/2021/11/14/2021-11-14-Tableau%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91-6/</id>
+    <published>2021-11-13T16:00:00.000Z</published>
+    <updated>2021-11-15T16:14:13.532Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;Tableau是一种数据可视化工具或商业智能工具，可以快速分析和显示图表或报表中的数据。</summary>
+        
+      
+    
+    
+    
+    <category term="Tableau" scheme="https://zhangandyu.github.io/categories/Tableau/"/>
+    
+    
+    <category term="Tableau" scheme="https://zhangandyu.github.io/tags/Tableau/"/>
+    
+  </entry>
+  
+  <entry>
     <title>博客搭建及主题选择教程</title>
     <link href="https://zhangandyu.github.io/2021/11/14/2021-11-14-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-1/"/>
     <id>https://zhangandyu.github.io/2021/11/14/2021-11-14-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-1/</id>
@@ -200,31 +225,6 @@
     <category term="博客" scheme="https://zhangandyu.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
     <category term="hexo" scheme="https://zhangandyu.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tableau学习教程</title>
-    <link href="https://zhangandyu.github.io/2021/11/14/2021-11-14-Tableau%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91-6/"/>
-    <id>https://zhangandyu.github.io/2021/11/14/2021-11-14-Tableau%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91-6/</id>
-    <published>2021-11-13T16:00:00.000Z</published>
-    <updated>2021-11-15T16:14:13.532Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;Tableau是一种数据可视化工具或商业智能工具，可以快速分析和显示图表或报表中的数据。</summary>
-        
-      
-    
-    
-    
-    <category term="Tableau" scheme="https://zhangandyu.github.io/categories/Tableau/"/>
-    
-    
-    <category term="Tableau" scheme="https://zhangandyu.github.io/tags/Tableau/"/>
     
   </entry>
   
