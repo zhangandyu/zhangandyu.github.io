@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="怪兽宇的小站" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="怪兽宇的小站" type="application/atom+xml">
 </head>
 
 
@@ -570,7 +570,7 @@ data<span class="token punctuation">.</span>head<span class="token punctuation">
 <th align="right">公众号</th>
 <th align="right">微博</th>
 <th align="right">其他</th>
-<th align="right">销售额</th>
+<th align="right">销售额（千元）</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -683,44 +683,43 @@ x_train<span class="token punctuation">,</span> x_test<span class="token punctua
 </ul>
 <p>以上我们就完成了：定义问题及收集数据和预处理前两部的内容。</p>
 <hr>
-<h3 id="3-选择算法并建立模型"><a href="#3-选择算法并建立模型" class="headerlink" title="3. 选择算法并建立模型"></a>3. 选择算法并建立模型</h3><h4 id="确定选用什么模型"><a href="#确定选用什么模型" class="headerlink" title="确定选用什么模型"></a>确定选用什么模型</h4><p>根据上图，我们能够明确知道，选用<strong>线性回归算法</strong>能够满足我们的需求。 </p>
-<p>在机器学习中的一元线性回归的公式为：<br>$$<br>y = w*x + b<br>$$<br>在机器学习中， 我斜率w叫做权重， 截距b叫做偏置。</p>
+<h3 id="3-选择算法并建立模型"><a href="#3-选择算法并建立模型" class="headerlink" title="3. 选择算法并建立模型"></a>3. 选择算法并建立模型</h3><h4 id="1）确定选用什么模型"><a href="#1）确定选用什么模型" class="headerlink" title="1）确定选用什么模型"></a>1）确定选用什么模型</h4><p>根据上图，我们能够明确知道，选用<strong>线性回归算法</strong>能够满足我们的需求。 </p>
+<p>在机器学习中的一元线性回归的公式为：<br>$$<br>y = w*x + b<br>$$<br>在机器学习中， 斜率w叫做权重， 截距b叫做偏置。</p>
 <p>虽然已经选定用线性回归算法，但是在算法工具包<code>sklean</code>中又有很多线性回归算法包，比如基本的线性回归算法<code>LinearRegression</code>，以及衍生出来的<code>lasso</code>回归和<code>Ridge</code>回归。</p>
 <p>哪一个才是合适的算法包，一般来说我们得一个个试，从最简单的开始，直到找到满意的结果为止。 在这个项目中，我们选用最基本的回归算法包<code>LinearRegression</code>。</p>
-<p>3） 建立模型（外部参数默认， 内部参数为： 权重w 和截距b）</p>
+<h4 id="2）-建立模型"><a href="#2）-建立模型" class="headerlink" title="2） 建立模型"></a>2） 建立模型</h4><p>外部参数默认， 内部参数为： 权重w 和截距b</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 调用 LinearRegression</span>
-
 <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>linear_model <span class="token keyword">import</span> LinearRegression  <span class="token comment"># 导入模型</span>
-linereg_model <span class="token operator">=</span> LinearRegression<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 使用线性回归算法创建模型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+linereg_model <span class="token operator">=</span> LinearRegression<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 使用线性回归算法创建模型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="4-训练模型"><a href="#4-训练模型" class="headerlink" title="4. 训练模型"></a>4. 训练模型</h3><p>训练模型就是用训练集中的特征变量和标签，根据当前样本的损失大小来逐渐拟合函数，确定最优的内部参数，最后完成模型。</p>
-<p>1）训练数据集</p>
+<h4 id="1）训练数据集"><a href="#1）训练数据集" class="headerlink" title="1）训练数据集"></a>1）训练数据集</h4><p>fit方法里面封装了机器学习的核心算法，我们只需要把特征和标签数据集，同时作为参数传进去。 </p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">
-linereg_model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>x_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span> <span class="token comment"># 用训练集数据进行训练，拟合函数，确认内部参数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>linear_model <span class="token keyword">import</span> LinearRegression <span class="token comment">#导入线性回归算法模型</span>
+model <span class="token operator">=</span> LinearRegression<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#使用线性回归算法</span>
+model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>x_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span> <span class="token comment">#用训练集数据，训练机器，拟合函数，确定参数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>这样，我们就完成了对模型的训练。 </p>
+<h3 id="5-模型评估和优化"><a href="#5-模型评估和优化" class="headerlink" title="5.模型评估和优化"></a>5.模型评估和优化</h3><h4 id="1）-预测测试集"><a href="#1）-预测测试集" class="headerlink" title="1） 预测测试集"></a>1） 预测测试集</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">y_pred <span class="token operator">=</span> model<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>x_test<span class="token punctuation">)</span> <span class="token comment">#预测测试集的Y值</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h4 id="2）将算法的权重和截距打印出来，看看具体值。"><a href="#2）将算法的权重和截距打印出来，看看具体值。" class="headerlink" title="2）将算法的权重和截距打印出来，看看具体值。"></a>2）将算法的权重和截距打印出来，看看具体值。</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'当前模型的特征的权重是: '</span><span class="token punctuation">,</span> model<span class="token punctuation">.</span>coef_<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'当前模型的截距（偏置）是: '</span><span class="token punctuation">,</span> model<span class="token punctuation">.</span>intercept_<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p>输出结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">当前模型的特征的权重分别是:  [[0.01182641]]
+当前模型的截距（偏置）是:  [7.12069997]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p>也就是说，我们的线性回归模型的公式为：</p>
+<p>y = 0.0118264 x + 7.1206997</p>
+<h4 id="3）对模型进行评估"><a href="#3）对模型进行评估" class="headerlink" title="3）对模型进行评估"></a>3）对模型进行评估</h4><p>在这里，我们使用常用于评估回归分析模型的指标：R2 分数</p>
+<pre class="line-numbers language-none"><code class="language-none">print("线性回归预测评分：", model.score(x_test, y_test)) # 评估模型<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>输出结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">线性回归预测评分： 0.8493759729652093<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>R2 越大，说明所拟合的回归模型越优。现在我们得到的 R2 值约为 0.849，在没有与其它模型进行比较之前，我们实际上也没法确定它是否能令人满意。</p>
+<p>如果模型的评估分数不理想，我们则需要回到第3步，调整模型的外部参数，重新训练模型。 要是结果依旧不理想，则需要考虑其他算法，创建全新的模型。</p>
+<h2 id="项目2：评估微信公众号阅读量"><a href="#项目2：评估微信公众号阅读量" class="headerlink" title="项目2：评估微信公众号阅读量"></a>项目2：评估微信公众号阅读量</h2>
                 
             </div>
             <hr/>
